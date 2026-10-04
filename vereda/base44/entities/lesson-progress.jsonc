@@ -1,0 +1,60 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "LessonProgress",
+  "description": "Progresso por lição (escrito apenas pelo backend).",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "unit_id": {
+      "type": "string"
+    },
+    "completed": {
+      "type": "boolean"
+    },
+    "attempts_count": {
+      "type": "integer"
+    },
+    "best_score": {
+      "type": "number"
+    },
+    "last_score": {
+      "type": "number"
+    },
+    "first_completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "xp_earned_total": {
+      "type": "integer"
+    },
+    "repeat_xp_awards": {
+      "type": "integer"
+    },
+    "last_repeat_xp_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "owner_email",
+    "lesson_id"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

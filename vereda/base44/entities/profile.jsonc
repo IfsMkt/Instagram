@@ -1,0 +1,85 @@
+// Gerado para o Vereda. RLS: privado do usuário
+{
+  "name": "Profile",
+  "description": "Preferências do usuário (privado).",
+  "type": "object",
+  "properties": {
+    "display_name": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "string"
+    },
+    "knowledge_level": {
+      "type": "string",
+      "enum": [
+        "comecando",
+        "algumas_historias",
+        "ja_estudo"
+      ]
+    },
+    "goal": {
+      "type": "string",
+      "enum": [
+        "historias",
+        "ensinamentos_jesus",
+        "rotina",
+        "aprofundar"
+      ]
+    },
+    "daily_minutes": {
+      "type": "integer",
+      "enum": [
+        5,
+        10,
+        15
+      ],
+      "default": 5
+    },
+    "tradition_pref": {
+      "type": "string",
+      "enum": [
+        "geral",
+        "catolico",
+        "protestante",
+        "nao_informar"
+      ],
+      "default": "geral",
+      "description": "Preferência opcional; a v1 oferece apenas a trilha cristã geral"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Fuso IANA usado no cálculo da sequência"
+    },
+    "sound_on": {
+      "type": "boolean",
+      "default": true
+    },
+    "reduced_motion": {
+      "type": "boolean",
+      "default": false
+    },
+    "reminder_time": {
+      "type": "string"
+    },
+    "onboarded": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "display_name"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

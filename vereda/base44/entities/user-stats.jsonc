@@ -1,0 +1,48 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "UserStats",
+  "description": "Totais de XP, nível e sequência (escrito apenas pelo backend).",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "total_xp": {
+      "type": "integer"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "lessons_completed": {
+      "type": "integer"
+    },
+    "units_completed": {
+      "type": "integer"
+    },
+    "reviews_completed": {
+      "type": "integer"
+    },
+    "streak_current": {
+      "type": "integer"
+    },
+    "streak_best": {
+      "type": "integer"
+    },
+    "last_study_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "owner_email"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

@@ -1,0 +1,14 @@
+// Configuração do projeto Base44 do Vereda.
+{
+  "name": "Vereda",
+  "description": "Aprenda a Bíblia, um passo por dia.",
+  "visibility": "public",
+  "entitiesDir": "./entities",
+  "functionsDir": "./functions",
+  "site": {
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "serveCommand": "npm run dev",
+    "outputDirectory": "./dist"
+  }
+}

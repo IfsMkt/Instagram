@@ -1,0 +1,147 @@
+// Gerado para o Vereda. RLS: conteúdo (leitura do publicado; escrita só via função admin-content)
+{
+  "name": "Lesson",
+  "description": "Lição curta (~5 min). Blocos identificam o tipo de texto: resumo bíblico, contexto, explicação, interpretação (com tradição) ou glossário.",
+  "type": "object",
+  "properties": {
+    "unit_id": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "licao",
+        "revisao_unidade"
+      ],
+      "default": "licao"
+    },
+    "duration_min": {
+      "type": "integer"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "biblia_resumo",
+              "contexto",
+              "conceito",
+              "interpretacao",
+              "glossario"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "tradition": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Blocos de conteúdo"
+    },
+    "summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reflection_prompt": {
+      "type": "string",
+      "description": "Pergunta de reflexão pessoal opcional; nunca é corrigida"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "rascunho",
+        "revisado",
+        "publicado"
+      ],
+      "default": "rascunho",
+      "description": "Status editorial. Só conteúdo revisado pode ser publicado."
+    },
+    "reviewed_by": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published_by": {
+      "type": "string"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_by": {
+      "type": "string"
+    },
+    "editorial_notes": {
+      "type": "string",
+      "description": "Notas internas para a revisão editorial"
+    },
+    "seed_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "title"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "$or": [
+        {
+          "data.status": "publicado"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": false,
+    "delete": false
+  }
+}

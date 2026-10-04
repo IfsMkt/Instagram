@@ -1,0 +1,94 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "LessonAttempt",
+  "description": "Histórico de tentativas e respostas (nunca apagado ao repetir a lição).",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "client_attempt_id": {
+      "type": "string"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "unit_id": {
+      "type": "string"
+    },
+    "attempt_number": {
+      "type": "integer"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "local_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "exercise_id": {
+            "type": "string"
+          },
+          "response": {
+            "description": "Resposta (texto, booleano, lista ou mapa)",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "correct": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "correct": {
+      "type": "integer"
+    },
+    "total": {
+      "type": "integer"
+    },
+    "xp_awarded": {
+      "type": "integer"
+    },
+    "result": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "owner_email",
+    "lesson_id"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

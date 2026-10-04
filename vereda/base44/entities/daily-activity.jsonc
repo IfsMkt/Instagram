@@ -1,0 +1,50 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "DailyActivity",
+  "description": "Atividade por dia local do usuário.",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "local_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "xp": {
+      "type": "integer"
+    },
+    "review_xp": {
+      "type": "integer"
+    },
+    "lessons_completed": {
+      "type": "integer"
+    },
+    "reviews_completed": {
+      "type": "integer"
+    },
+    "goal_xp": {
+      "type": "integer"
+    },
+    "goal_met": {
+      "type": "boolean"
+    },
+    "last_activity_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "owner_email",
+    "local_date"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

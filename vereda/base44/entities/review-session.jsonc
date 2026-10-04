@@ -1,0 +1,33 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "ReviewSession",
+  "description": "Sessões de revisão concluídas.",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "client_session_id": {
+      "type": "string"
+    },
+    "local_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "result": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "owner_email"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

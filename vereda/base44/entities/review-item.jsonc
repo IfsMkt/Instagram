@@ -1,0 +1,60 @@
+// Gerado para o Vereda. RLS: privado do usuário — escrita apenas pelo backend
+{
+  "name": "ReviewItem",
+  "description": "Questão agendada para revisão espaçada (1, 3, 7, 14 dias).",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "exercise_id": {
+      "type": "string"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "unit_id": {
+      "type": "string"
+    },
+    "interval_index": {
+      "type": "integer"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ativo",
+        "dominado"
+      ]
+    },
+    "times_wrong": {
+      "type": "integer"
+    },
+    "times_right": {
+      "type": "integer"
+    },
+    "last_result": {
+      "type": "string"
+    },
+    "last_reviewed_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "owner_email",
+    "exercise_id"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "data.owner_email": "{{user.email}}"
+    },
+    "update": false,
+    "delete": false
+  }
+}

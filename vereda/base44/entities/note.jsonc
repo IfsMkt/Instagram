@@ -1,0 +1,49 @@
+// Gerado para o Vereda. RLS: privado do usuário
+{
+  "name": "Note",
+  "description": "Anotação ou reflexão pessoal (privado).",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "anotacao",
+        "reflexao"
+      ],
+      "default": "anotacao"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "lesson_title": {
+      "type": "string"
+    },
+    "prompt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "body"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

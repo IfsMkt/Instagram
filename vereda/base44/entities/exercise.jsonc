@@ -1,0 +1,167 @@
+// Gerado para o Vereda. RLS: conteúdo (leitura do publicado; escrita só via função admin-content)
+{
+  "name": "Exercise",
+  "description": "Exercício objetivo com resposta verificável e explicação.",
+  "type": "object",
+  "properties": {
+    "lesson_id": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "multipla_escolha",
+        "verdadeiro_falso",
+        "ordenar",
+        "associar",
+        "completar"
+      ]
+    },
+    "prompt": {
+      "type": "string"
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Alternativas (múltipla escolha / completar)"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Itens a ordenar, na ordem exibida"
+    },
+    "left": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "right": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "answer": {
+      "description": "Resposta correta: id da opção, booleano, lista de ids ou mapa esquerda→direita",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "rascunho",
+        "revisado",
+        "publicado"
+      ],
+      "default": "rascunho",
+      "description": "Status editorial. Só conteúdo revisado pode ser publicado."
+    },
+    "reviewed_by": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published_by": {
+      "type": "string"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_by": {
+      "type": "string"
+    },
+    "editorial_notes": {
+      "type": "string",
+      "description": "Notas internas para a revisão editorial"
+    },
+    "seed_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "lesson_id",
+    "type",
+    "prompt"
+  ],
+  "rls": {
+    "create": false,
+    "read": {
+      "$or": [
+        {
+          "data.status": "publicado"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": false,
+    "delete": false
+  }
+}
