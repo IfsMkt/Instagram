@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   Vereda — tokens visuais
+   ===================================================================== */
+@theme {
+  --font-sans: var(--font-nunito), ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-baloo), var(--font-nunito), ui-rounded, system-ui, sans-serif;
+
+  --color-cream: #fff8ec;
+  --color-cream-deep: #f6ead3;
+  --color-paper: #fffdf8;
+  --color-ink: #2b2733;
+  --color-ink-soft: #5a5466;
+  --color-ink-faint: #8a8396;
+  --color-line: #eadfca;
+
+  --color-green: #3f9e4d;
+  --color-green-dark: #2c7a38;
+  --color-green-soft: #dcf1d6;
+  --color-green-ink: #1f5a29;
+
+  --color-blue: #3b82d0;
+  --color-blue-dark: #2a63a6;
+  --color-blue-soft: #dbeafb;
+
+  --color-coral: #ec6f5a;
+  --color-coral-dark: #c4513e;
+  --color-coral-soft: #fde2dc;
+
+  --color-yellow: #f3bd3c;
+  --color-yellow-dark: #c99418;
+  --color-yellow-soft: #fdf0c8;
+
+  --color-lilac: #9a7fd8;
+  --color-lilac-dark: #7558b8;
+  --color-lilac-soft: #ece4fa;
+
+  --color-teal: #2a9d92;
+  --color-teal-dark: #1d776e;
+  --color-teal-soft: #d4f0ec;
+
+  --color-orange: #ee8636;
+  --color-orange-dark: #c4651b;
+  --color-orange-soft: #fde5d0;
+
+  --color-indigo: #5a67cf;
+  --color-indigo-dark: #4049a8;
+  --color-indigo-soft: #e1e4f9;
+
+  --radius-blob: 28px;
+  --shadow-press: 0 4px 0 0 var(--tw-shadow-color, rgba(43, 39, 51, 0.18));
+
+  --animate-pop: pop 380ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-rise: rise 420ms ease-out both;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 1.8s ease-out infinite;
+  --animate-wiggle: wiggle 600ms ease-in-out both;
+  --animate-shake: shake 400ms ease-in-out both;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes rise {
+  0% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(63, 158, 77, 0.45); }
+  80%, 100% { box-shadow: 0 0 0 16px rgba(63, 158, 77, 0); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+@keyframes confetti-fall {
+  0% { transform: translate3d(0, -20vh, 0) rotate(0); opacity: 1; }
+  100% { transform: translate3d(var(--drift, 0), 105vh, 0) rotate(720deg); opacity: 0.9; }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Foco sempre visível para navegação por teclado (camada base: utilitários podem ajustar) */
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+}
+
+/* Papel com textura leve (sem imagens externas) */
+.paper-texture {
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(243, 189, 60, 0.08) 0, transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(154, 127, 216, 0.07) 0, transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(63, 158, 77, 0.07) 0, transparent 40%);
+}
+
+/* Botões com volume discreto e resposta ao toque */
+.btn-3d {
+  box-shadow: 0 4px 0 0 var(--btn-shadow, rgba(43, 39, 51, 0.2));
+  transition: transform 90ms ease, box-shadow 90ms ease, filter 120ms ease;
+}
+.btn-3d:hover:not(:disabled) { filter: brightness(1.04); }
+.btn-3d:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 var(--btn-shadow, rgba(43, 39, 51, 0.2));
+}
+.btn-3d:disabled { cursor: not-allowed; }
+
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  animation: confetti-fall var(--dur, 2.6s) cubic-bezier(0.2, 0.6, 0.4, 1) var(--delay, 0s) forwards;
+  pointer-events: none;
+  z-index: 60;
+}
+
+/* Movimento reduzido: preferência do sistema OU configuração no perfil */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .confetti-piece { display: none; }
+}
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-reduced-motion="true"] .confetti-piece { display: none; }
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
