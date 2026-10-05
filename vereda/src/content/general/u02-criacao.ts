@@ -1,0 +1,401 @@
+import { b, fill, match, mc, order, tf, type UnitDef } from "../schema";
+
+export const u02: UnitDef = {
+  slug: "geral-u02-criacao",
+  title: "Criação e primeiros relatos",
+  description: "Os primeiros capítulos de Gênesis: criação, jardim, escolhas e recomeços.",
+  scene: "garden",
+  lessons: [
+    {
+      slug: "g02-no-principio",
+      title: "No princípio",
+      objective: "Conhecer o relato da criação em sete dias e o que ele destaca.",
+      references: ["Gênesis 1:1-2:3"],
+      context:
+        "O livro de Gênesis começa com um relato organizado em sete dias. Ele foi escrito em forma de texto cuidadosamente estruturado, com repetições que lembram um poema.",
+      blocks: [
+        b(
+          "resumo",
+          "Do caos à ordem",
+          "No início, a terra era sem forma e vazia. Deus fala, e as coisas passam a existir: luz, céu, mares e terra, plantas, sol e lua, peixes e aves, animais terrestres e, por fim, o ser humano. Ao final de cada etapa, o texto repete que aquilo era bom.",
+          "Gênesis 1:1-25",
+        ),
+        b(
+          "resumo",
+          "À imagem de Deus",
+          "No sexto dia, Deus cria o ser humano — homem e mulher — “à sua imagem” e lhe confia o cuidado da criação. No sétimo dia, Deus descansa e abençoa esse dia.",
+          "Gênesis 1:26-2:3",
+        ),
+        b(
+          "interpretacao",
+          "Como ler os “dias”?",
+          "Leitores interpretam esse relato de maneiras diferentes: alguns entendem os dias de forma literal; muitos outros o leem como um texto teológico e poético, que fala de quem criou e por que, sem pretender explicar o “como” científico. As duas leituras existem dentro do cristianismo.",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Como a terra é descrita no início do relato?",
+          ["Sem forma e vazia", "Cheia de cidades", "Coberta de jardins", "Iluminada pelo sol"],
+          0,
+          "O relato começa com a terra “sem forma e vazia”, e a criação traz ordem e vida.",
+          "Gênesis 1:2",
+        ),
+        fill(
+          "Ao final de cada etapa da criação, o texto repete que aquilo era",
+          ".",
+          ["bom", "perfeito", "eterno"],
+          0,
+          "A expressão “e viu que era bom” se repete ao longo do capítulo 1.",
+          "Gênesis 1:10, 12, 18, 21, 25, 31",
+        ),
+        order(
+          "Coloque estas criações na ordem do relato.",
+          ["A luz", "Plantas na terra", "Sol e lua", "Peixes e aves", "O ser humano"],
+          "Luz (dia 1), plantas (dia 3), sol e lua (dia 4), peixes e aves (dia 5), ser humano (dia 6).",
+          "Gênesis 1:3-27",
+        ),
+        tf(
+          "No relato, o ser humano é criado “à imagem de Deus”, homem e mulher.",
+          true,
+          "Gênesis 1:27 diz que Deus criou o ser humano à sua imagem, homem e mulher.",
+          "Gênesis 1:27",
+        ),
+        mc(
+          "O que acontece no sétimo dia?",
+          ["Deus descansa e abençoa o dia", "Deus cria os animais", "Deus separa as águas", "Deus cria a luz"],
+          0,
+          "O sétimo dia é marcado pelo descanso e pela bênção.",
+          "Gênesis 2:2-3",
+        ),
+      ],
+      takeaways: [
+        "Gênesis 1 apresenta a criação em sete dias, do caos à ordem.",
+        "O ser humano é criado à imagem de Deus e recebe a tarefa de cuidar.",
+        "Há leituras diferentes sobre os “dias”, literal e simbólica.",
+      ],
+      reflection: "O que significa para você a ideia de que tudo foi criado como “bom”?",
+    },
+    {
+      slug: "g02-o-jardim",
+      title: "O jardim do Éden",
+      objective: "Conhecer o segundo relato da criação, centrado no jardim.",
+      references: ["Gênesis 2:4-25"],
+      context:
+        "Logo depois do primeiro relato, Gênesis 2 conta a criação de outro ângulo: mais próximo, com um jardim, rios e o primeiro casal.",
+      blocks: [
+        b(
+          "resumo",
+          "Do pó, com fôlego de vida",
+          "Deus forma o ser humano do pó da terra e sopra em suas narinas o fôlego de vida. Depois, planta um jardim no Éden e coloca ali o homem para cultivá-lo e guardá-lo.",
+          "Gênesis 2:7-15",
+        ),
+        b(
+          "resumo",
+          "Duas árvores e uma companhia",
+          "No meio do jardim estão a árvore da vida e a árvore do conhecimento do bem e do mal, da qual o homem não deveria comer. Deus diz que não é bom que o homem esteja só, e forma a mulher. O homem a reconhece como alguém igual a ele.",
+          "Gênesis 2:9, 16-23",
+        ),
+        b(
+          "explicacao",
+          "Dois relatos lado a lado",
+          "Gênesis 1 e Gênesis 2 contam a criação de jeitos diferentes: o primeiro é amplo e organizado em dias; o segundo é próximo e narrativo. Ler os dois juntos mostra aspectos complementares.",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Segundo Gênesis 2, de que o ser humano é formado?",
+          ["Do pó da terra", "Da luz", "Das águas", "De uma estrela"],
+          0,
+          "Deus forma o ser humano do pó da terra e sopra nele o fôlego de vida.",
+          "Gênesis 2:7",
+        ),
+        tf(
+          "No jardim, o homem recebe a tarefa de cultivar e guardar.",
+          true,
+          "O texto diz que Deus colocou o homem no jardim para cultivá-lo e guardá-lo.",
+          "Gênesis 2:15",
+        ),
+        match(
+          "Associe cada árvore ou elemento ao que o texto diz.",
+          [
+            ["Árvore do conhecimento do bem e do mal", "Não deveria ser comida"],
+            ["Árvore da vida", "Estava no meio do jardim"],
+            ["O rio do Éden", "Dividia-se em quatro braços"],
+          ],
+          "O jardim tinha duas árvores especiais e um rio que se dividia em quatro.",
+          "Gênesis 2:9-17",
+        ),
+        fill(
+          "Deus diz: “Não é bom que o homem esteja",
+          "”.",
+          ["só", "cansado", "com fome"],
+          0,
+          "Por isso Deus forma uma companheira adequada a ele.",
+          "Gênesis 2:18",
+        ),
+        mc(
+          "Qual é a melhor forma de descrever Gênesis 1 e 2?",
+          [
+            "Dois relatos com estilos diferentes que se complementam",
+            "O mesmo texto repetido duas vezes",
+            "Um relato sobre Abraão",
+            "Uma lista de leis",
+          ],
+          0,
+          "Gênesis 1 é amplo e em dias; Gênesis 2 é próximo e narrativo.",
+          "Gênesis 1-2",
+        ),
+      ],
+      takeaways: [
+        "Gênesis 2 conta a criação de modo próximo, com o jardim do Éden.",
+        "O ser humano é formado do pó e recebe o fôlego de vida.",
+        "Homem e mulher são apresentados como companheiros.",
+      ],
+      reflection: "Cultivar e guardar: que espaço ou relação você sente que está sob seu cuidado?",
+    },
+    {
+      slug: "g02-a-escolha",
+      title: "A escolha no jardim",
+      objective: "Entender o relato de Gênesis 3 e suas consequências na narrativa.",
+      references: ["Gênesis 3:1-24"],
+      context:
+        "Gênesis 3 conta como a confiança foi quebrada no jardim. É um texto curto que marca toda a história bíblica que vem depois.",
+      blocks: [
+        b(
+          "resumo",
+          "A conversa com a serpente",
+          "A serpente questiona a mulher sobre a ordem de Deus e sugere que comer do fruto proibido os faria como Deus. A mulher come e dá ao homem, que também come.",
+          "Gênesis 3:1-6",
+        ),
+        b(
+          "resumo",
+          "Esconder-se e explicar-se",
+          "Os dois percebem que estão nus e se escondem. Quando Deus pergunta o que aconteceu, o homem culpa a mulher e a mulher culpa a serpente. O texto descreve consequências e a saída do jardim.",
+          "Gênesis 3:7-24",
+        ),
+        b(
+          "tradicoes",
+          "Leituras na tradição cristã",
+          "Muitas tradições cristãs leem este texto como a origem do pecado na humanidade (chamada de “queda”). O texto também mostra um cuidado: Deus faz roupas de pele para eles antes de saírem do jardim.",
+          "Gênesis 3:21",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Qual animal conversa com a mulher no jardim?",
+          ["A serpente", "O leão", "A pomba", "O corvo"],
+          0,
+          "A serpente é a personagem que questiona a ordem de Deus.",
+          "Gênesis 3:1",
+        ),
+        order(
+          "Ordene os acontecimentos de Gênesis 3.",
+          ["A serpente questiona a ordem de Deus", "A mulher e o homem comem do fruto", "Eles se escondem de Deus", "Saem do jardim"],
+          "A sequência vai da conversa à saída do jardim.",
+          "Gênesis 3:1-24",
+        ),
+        tf(
+          "Quando questionados, o homem e a mulher assumem a culpa sem acusar ninguém.",
+          false,
+          "O homem culpa a mulher, e a mulher culpa a serpente.",
+          "Gênesis 3:12-13",
+        ),
+        fill(
+          "Antes de saírem do jardim, Deus faz para eles roupas de",
+          ".",
+          ["pele", "linho", "folhas de ouro"],
+          0,
+          "Gênesis 3:21 menciona roupas de pele feitas por Deus.",
+          "Gênesis 3:21",
+        ),
+        mc(
+          "Como muitas tradições cristãs chamam o acontecimento de Gênesis 3?",
+          ["Queda", "Êxodo", "Aliança", "Pentecostes"],
+          0,
+          "“Queda” é o nome tradicional para esse relato na teologia cristã.",
+          "Gênesis 3",
+        ),
+      ],
+      takeaways: [
+        "Gênesis 3 conta a quebra de confiança no jardim.",
+        "Depois da escolha, surgem medo, vergonha e acusações.",
+        "Mesmo nas consequências, o texto mostra um gesto de cuidado de Deus.",
+      ],
+      reflection: "Por que será que é tão comum culpar outra pessoa quando erramos?",
+    },
+    {
+      slug: "g02-caim-e-abel",
+      title: "Caim e Abel",
+      objective: "Conhecer o relato dos dois irmãos e a pergunta “onde está seu irmão?”.",
+      references: ["Gênesis 4:1-16"],
+      context: "Fora do jardim, a história continua com a primeira família. O relato de Caim e Abel fala de inveja, violência e responsabilidade.",
+      blocks: [
+        b(
+          "resumo",
+          "Duas ofertas",
+          "Caim cultivava a terra e Abel cuidava de ovelhas. Os dois trazem ofertas a Deus. A oferta de Abel é aceita, e Caim fica irado. Deus o adverte a dominar aquilo que o ameaçava.",
+          "Gênesis 4:2-7",
+        ),
+        b(
+          "resumo",
+          "“Sou eu o guarda do meu irmão?”",
+          "Caim mata Abel no campo. Quando Deus pergunta onde está Abel, Caim responde: “Sou eu o guarda do meu irmão?”. Caim passa a viver errante, mas Deus coloca nele um sinal de proteção.",
+          "Gênesis 4:8-15",
+        ),
+        b(
+          "explicacao",
+          "Uma pergunta que atravessa o tempo",
+          "A resposta de Caim virou uma pergunta famosa sobre responsabilidade com o próximo. O texto não explica em detalhes por que uma oferta foi aceita e a outra não; leitores propõem razões diferentes.",
+        ),
+      ],
+      exercises: [
+        match(
+          "Associe cada irmão ao seu trabalho.",
+          [
+            ["Caim", "Cultivava a terra"],
+            ["Abel", "Cuidava de ovelhas"],
+          ],
+          "Caim era agricultor e Abel, pastor.",
+          "Gênesis 4:2",
+        ),
+        fill(
+          "Caim responde a Deus: “Sou eu o",
+          "do meu irmão?”.",
+          ["guarda", "pai", "rei"],
+          0,
+          "A frase ficou conhecida como uma pergunta sobre responsabilidade.",
+          "Gênesis 4:9",
+        ),
+        tf(
+          "Depois do crime, Deus coloca em Caim um sinal para protegê-lo.",
+          true,
+          "Mesmo punido, Caim recebe um sinal de proteção.",
+          "Gênesis 4:15",
+        ),
+        mc(
+          "Qual sentimento de Caim o texto destaca antes do crime?",
+          ["Ira", "Alegria", "Medo do mar", "Saudade"],
+          0,
+          "Caim fica irado e Deus o adverte.",
+          "Gênesis 4:5-7",
+        ),
+        order(
+          "Ordene os acontecimentos.",
+          ["Os irmãos trazem ofertas", "Deus adverte Caim", "Caim mata Abel", "Caim vive errante, com um sinal de proteção"],
+          "Essa é a sequência do relato em Gênesis 4.",
+          "Gênesis 4:3-16",
+        ),
+      ],
+      takeaways: [
+        "Caim era agricultor; Abel, pastor.",
+        "A pergunta “sou eu o guarda do meu irmão?” fala de responsabilidade.",
+        "Mesmo após o crime, Caim recebe proteção.",
+      ],
+      reflection: "Quem são as pessoas pelas quais você se sente responsável hoje?",
+    },
+    {
+      slug: "g02-noe",
+      title: "Noé e o dilúvio",
+      objective: "Conhecer o relato de Noé, da arca e da aliança com o arco-íris.",
+      references: ["Gênesis 6:5-9:17"],
+      context:
+        "Gênesis conta que a violência tinha se espalhado pela terra. Noé é apresentado como um homem justo, chamado a construir uma arca.",
+      blocks: [
+        b(
+          "resumo",
+          "A arca",
+          "Deus pede a Noé que construa uma arca e entre nela com sua família e animais. As águas cobrem a terra. Depois, as águas baixam e a arca para sobre os montes de Ararate.",
+          "Gênesis 6:14-8:4",
+        ),
+        b(
+          "resumo",
+          "O corvo, a pomba e o ramo",
+          "Noé solta um corvo e depois uma pomba. Numa das vezes, a pomba volta com uma folha de oliveira no bico — sinal de que as águas tinham baixado.",
+          "Gênesis 8:6-12",
+        ),
+        b(
+          "resumo",
+          "O arco nas nuvens",
+          "Deus faz uma aliança com Noé, seus descendentes e todos os seres vivos, prometendo que um dilúvio não destruiria mais a terra. O sinal dessa aliança é o arco nas nuvens.",
+          "Gênesis 9:8-17",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Onde a arca parou quando as águas baixaram?",
+          ["Nos montes de Ararate", "No monte Sinai", "No rio Jordão", "Em Jerusalém"],
+          0,
+          "Gênesis 8:4 diz que a arca repousou sobre os montes de Ararate.",
+          "Gênesis 8:4",
+        ),
+        fill(
+          "A pomba voltou à arca com uma folha de",
+          "no bico.",
+          ["oliveira", "palmeira", "figueira"],
+          0,
+          "A folha de oliveira indicou que as águas tinham baixado.",
+          "Gênesis 8:11",
+        ),
+        tf(
+          "O sinal da aliança com Noé é o arco nas nuvens.",
+          true,
+          "Deus coloca o arco nas nuvens como sinal da aliança.",
+          "Gênesis 9:13",
+        ),
+        order(
+          "Ordene o relato.",
+          ["Noé constrói a arca", "As águas cobrem a terra", "A pomba volta com a folha", "Deus faz aliança com o arco nas nuvens"],
+          "Essa é a sequência do relato do dilúvio.",
+          "Gênesis 6-9",
+        ),
+        mc(
+          "Com quem é feita a aliança depois do dilúvio?",
+          ["Com Noé, seus descendentes e os seres vivos", "Somente com Noé", "Somente com os animais", "Com o faraó"],
+          0,
+          "O texto diz que a aliança inclui Noé, seus descendentes e todos os seres vivos.",
+          "Gênesis 9:9-10",
+        ),
+      ],
+      takeaways: [
+        "Noé é apresentado como justo e constrói a arca.",
+        "A pomba com a folha de oliveira anuncia que as águas baixaram.",
+        "A aliança com Noé tem como sinal o arco nas nuvens.",
+      ],
+      reflection: "O arco-íris virou sinal de recomeço. Que recomeço você gostaria de viver?",
+    },
+  ],
+  review: {
+    slug: "g02-revisao",
+    title: "Revisão: Criação e primeiros relatos",
+    intro: "Vamos relembrar os primeiros capítulos de Gênesis: criação, jardim, escolhas e recomeços.",
+    extra: [
+      order(
+        "Ordene os relatos como aparecem em Gênesis.",
+        ["Criação em sete dias", "O jardim do Éden", "Caim e Abel", "O dilúvio"],
+        "Gênesis 1-2, 3, 4 e 6-9.",
+        "Gênesis 1-9",
+      ),
+      match(
+        "Associe cada relato a um símbolo marcante.",
+        [
+          ["Noé", "Arco nas nuvens"],
+          ["Éden", "Árvore do conhecimento do bem e do mal"],
+          ["Sétimo dia", "Descanso"],
+        ],
+        "Cada relato tem um símbolo conhecido.",
+        "Gênesis 2:2-3; 2:17; 9:13",
+      ),
+      tf(
+        "Todas as tradições cristãs interpretam os “dias” da criação de forma literal.",
+        false,
+        "Há leituras literais e leituras simbólicas/teológicas dentro do cristianismo.",
+        "Gênesis 1",
+      ),
+    ],
+    takeaways: [
+      "Gênesis 1 e 2 contam a criação de modos complementares.",
+      "Gênesis 3 e 4 falam de escolhas, culpa e responsabilidade.",
+      "O dilúvio termina com uma aliança e um sinal de recomeço.",
+    ],
+  },
+};

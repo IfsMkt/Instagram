@@ -1,0 +1,417 @@
+import { b, fill, match, mc, order, tf, type UnitDef } from "../schema";
+
+export const u05: UnitDef = {
+  slug: "geral-u05-reis-salmos-profetas",
+  title: "Reis, salmos e profetas",
+  description: "Reis de Israel, as orações dos Salmos e as vozes dos profetas.",
+  scene: "city",
+  lessons: [
+    {
+      slug: "g05-saul",
+      title: "Saul, o primeiro rei",
+      objective: "Entender como Israel passou a ter um rei e quem foi Saul.",
+      references: ["1 Samuel 8:4-22", "1 Samuel 9-10", "1 Samuel 15:10-23"],
+      context:
+        "Depois de se estabelecer em Canaã, Israel foi liderado por juízes e pelo profeta Samuel. Com o tempo, o povo pediu um rei, como as outras nações.",
+      blocks: [
+        b(
+          "resumo",
+          "“Queremos um rei”",
+          "Os anciãos de Israel pedem um rei a Samuel. Samuel fica preocupado e alerta sobre os custos de ter um rei, mas o povo insiste, e Deus orienta Samuel a atender o pedido.",
+          "1 Samuel 8:4-22",
+        ),
+        b(
+          "resumo",
+          "Saul é ungido",
+          "Saul, da tribo de Benjamim, é descrito como alto e de boa aparência. Samuel o unge com óleo, um gesto que indicava a escolha para uma missão especial.",
+          "1 Samuel 9:1-2; 10:1",
+        ),
+        b(
+          "resumo",
+          "Um reinado que se perde",
+          "Saul vence batalhas, mas desobedece às orientações recebidas. Samuel diz que obedecer vale mais do que oferecer sacrifícios, e anuncia que o reino seria dado a outro.",
+          "1 Samuel 15:22-28",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Quem ungiu Saul como rei?",
+          ["Samuel", "Moisés", "Davi", "Elias"],
+          0,
+          "O profeta Samuel ungiu Saul com óleo.",
+          "1 Samuel 10:1",
+        ),
+        tf(
+          "O povo pediu um rei para ser como as outras nações.",
+          true,
+          "Os anciãos pediram um rei “como têm todas as nações”.",
+          "1 Samuel 8:5",
+        ),
+        fill(
+          "Samuel ensina que obedecer vale mais do que oferecer",
+          ".",
+          ["sacrifícios", "ouro", "cânticos"],
+          0,
+          "Essa frase está em 1 Samuel 15:22.",
+          "1 Samuel 15:22",
+        ),
+        mc(
+          "De qual tribo era Saul?",
+          ["Benjamim", "Judá", "Levi", "Dã"],
+          0,
+          "Saul era filho de Quis, da tribo de Benjamim.",
+          "1 Samuel 9:1-2",
+        ),
+        match(
+          "Associe cada termo ao significado.",
+          [
+            ["Ungir", "Derramar óleo como sinal de escolha"],
+            ["Juízes", "Líderes antes dos reis"],
+            ["Samuel", "Profeta que unge os reis"],
+          ],
+          "Termos importantes do início da monarquia.",
+          "1 Samuel 8-10",
+        ),
+      ],
+      takeaways: [
+        "Israel pediu um rei, e Samuel ungiu Saul.",
+        "Ungir com óleo indicava a escolha para uma missão.",
+        "A desobediência de Saul abriu caminho para outro rei.",
+      ],
+      reflection: "Por que será que o povo quis ser “como as outras nações”?",
+    },
+    {
+      slug: "g05-davi",
+      title: "Davi: do campo ao trono",
+      objective: "Conhecer a trajetória de Davi, o pastor que se tornou rei.",
+      references: ["1 Samuel 16:1-13", "1 Samuel 17", "2 Samuel 5:1-5"],
+      context: "Davi é um dos personagens mais lembrados da Bíblia: pastor, músico, guerreiro e rei — com acertos e falhas graves.",
+      blocks: [
+        b(
+          "resumo",
+          "O mais novo",
+          "Samuel vai a Belém, à casa de Jessé, para ungir um novo rei. Os filhos mais velhos passam, mas o escolhido é o mais novo, Davi, que cuidava das ovelhas. Deus diz a Samuel que o ser humano vê a aparência, mas Deus vê o coração.",
+          "1 Samuel 16:6-13",
+        ),
+        b(
+          "resumo",
+          "Davi e Golias",
+          "Ainda jovem, Davi enfrenta o guerreiro filisteu Golias com uma funda e pedras, sem usar a armadura do rei, e vence.",
+          "1 Samuel 17:38-50",
+        ),
+        b(
+          "resumo",
+          "Rei em Jerusalém",
+          "Depois da morte de Saul, Davi se torna rei e conquista Jerusalém, que passa a ser a capital. A Bíblia também relata erros graves de Davi, como o caso de Bate-Seba, e seu arrependimento.",
+          "2 Samuel 5:1-9; 11-12",
+        ),
+      ],
+      exercises: [
+        fill(
+          "Deus diz a Samuel: o ser humano vê a aparência, mas Deus vê o",
+          ".",
+          ["coração", "nome", "rebanho"],
+          0,
+          "1 Samuel 16:7 traz essa ideia.",
+          "1 Samuel 16:7",
+        ),
+        mc(
+          "Qual era a ocupação de Davi quando foi ungido?",
+          ["Cuidava de ovelhas", "Era soldado do rei", "Era sacerdote", "Era pescador"],
+          0,
+          "Davi era o mais novo e cuidava das ovelhas.",
+          "1 Samuel 16:11",
+        ),
+        tf(
+          "Davi venceu Golias usando a armadura do rei Saul.",
+          false,
+          "Davi tirou a armadura e usou uma funda e pedras.",
+          "1 Samuel 17:38-40",
+        ),
+        mc(
+          "Qual cidade se tornou capital no reinado de Davi?",
+          ["Jerusalém", "Belém", "Samaria", "Jericó"],
+          0,
+          "Davi conquistou Jerusalém e fez dela sua capital.",
+          "2 Samuel 5:6-9",
+        ),
+        order(
+          "Ordene a trajetória de Davi.",
+          ["Cuida das ovelhas", "É ungido por Samuel", "Enfrenta Golias", "Torna-se rei em Jerusalém"],
+          "1 Samuel 16-17 e 2 Samuel 5.",
+          "1 Samuel 16 - 2 Samuel 5",
+        ),
+      ],
+      takeaways: [
+        "Davi, o filho mais novo de Jessé, foi ungido por Samuel.",
+        "Ele enfrentou Golias com uma funda e pedras.",
+        "Como rei, fez de Jerusalém a capital — e a Bíblia não esconde seus erros.",
+      ],
+      reflection: "O que significa para você que Deus “vê o coração”?",
+    },
+    {
+      slug: "g05-salmos",
+      title: "Os Salmos: orações em poesia",
+      objective: "Conhecer o livro dos Salmos e seus tipos de oração.",
+      references: ["Salmos 1", "Salmos 23", "Salmos 51", "Salmos 150"],
+      context:
+        "Salmos é o livro de orações e cânticos de Israel. Por séculos, foi usado em celebrações e na oração pessoal — e continua sendo, por judeus e cristãos.",
+      blocks: [
+        b(
+          "explicacao",
+          "150 poemas",
+          "O livro reúne 150 salmos. Eles expressam muitas emoções: louvor, gratidão, confiança, tristeza, arrependimento e até queixas. Há salmos para celebrar e salmos para quando tudo parece difícil.",
+        ),
+        b(
+          "contexto",
+          "Quem escreveu?",
+          "Muitos salmos são atribuídos a Davi em seus títulos. Outros são atribuídos a Asafe, aos filhos de Coré, a Salomão e até a Moisés (Salmo 90). Muitos estudiosos entendem que o livro foi reunido ao longo de séculos.",
+        ),
+        b(
+          "tradicoes",
+          "A numeração dos Salmos",
+          "Algumas Bíblias católicas seguem a numeração da tradução grega antiga, que fica um número atrás na maior parte do livro. Por isso, o salmo do pastor pode aparecer como Salmo 23 ou Salmo 22, dependendo da edição. Muitas edições mostram as duas numerações.",
+        ),
+        b(
+          "resumo",
+          "O Senhor é meu pastor",
+          "No Salmo 23, o salmista compara Deus a um pastor que conduz, alimenta e protege, inclusive no vale escuro.",
+          "Salmos 23:1-4",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Quantos salmos tem o livro dos Salmos?",
+          ["150", "100", "73", "27"],
+          0,
+          "O livro reúne 150 salmos.",
+          "Salmos 1-150",
+        ),
+        tf(
+          "Os Salmos só expressam alegria e louvor.",
+          false,
+          "Há salmos de louvor, mas também de tristeza, queixa e arrependimento.",
+          "Salmos 13; 51",
+        ),
+        match(
+          "Associe cada salmo ao tema.",
+          [
+            ["Salmo 23", "Deus como pastor"],
+            ["Salmo 51", "Pedido de perdão"],
+            ["Salmo 150", "Louvor com instrumentos"],
+          ],
+          "Cada salmo tem um tom próprio.",
+          "Salmos 23; 51; 150",
+        ),
+        mc(
+          "Por que o mesmo salmo pode ter números diferentes em Bíblias diferentes?",
+          [
+            "Algumas edições seguem a numeração da antiga tradução grega",
+            "Porque os salmos mudam de texto",
+            "Porque alguns salmos foram removidos",
+            "Porque cada igreja escreve seus próprios salmos",
+          ],
+          0,
+          "A numeração grega antiga (usada em algumas Bíblias católicas) difere da hebraica em boa parte do livro.",
+          "Introdução aos Salmos",
+        ),
+        fill(
+          "Muitos salmos são atribuídos, em seus títulos, ao rei",
+          ".",
+          ["Davi", "Saul", "Acabe"],
+          0,
+          "Davi é o nome mais associado aos Salmos; outros nomes também aparecem.",
+          "Títulos dos Salmos",
+        ),
+      ],
+      takeaways: [
+        "Salmos reúne 150 orações e cânticos com emoções variadas.",
+        "Muitos são atribuídos a Davi, mas não todos.",
+        "A numeração pode variar entre edições católicas e protestantes.",
+      ],
+      reflection: "Se você fosse escrever um salmo hoje, ele seria de alegria, de pedido ou de desabafo?",
+    },
+    {
+      slug: "g05-salomao-e-a-divisao",
+      title: "Salomão e a divisão do reino",
+      objective: "Conhecer Salomão, o templo e a divisão do reino.",
+      references: ["1 Reis 3:5-14", "1 Reis 6:1-14", "1 Reis 12:1-20"],
+      context: "Salomão, filho de Davi, herda o trono. Seu reinado é lembrado pela sabedoria, pela construção do templo — e por problemas que levaram à divisão do reino.",
+      blocks: [
+        b(
+          "resumo",
+          "Um pedido por sabedoria",
+          "Em sonho, Deus pergunta o que Salomão deseja. Ele pede um coração que saiba ouvir e discernir para governar bem. Deus se agrada do pedido.",
+          "1 Reis 3:5-12",
+        ),
+        b(
+          "resumo",
+          "O templo",
+          "Salomão constrói em Jerusalém o templo, que se torna o centro da adoração de Israel.",
+          "1 Reis 6:1-14",
+        ),
+        b(
+          "resumo",
+          "Dois reinos",
+          "Depois da morte de Salomão, as tribos do norte rejeitam seu filho Roboão. O reino se divide: Israel ao norte e Judá ao sul, com Jerusalém.",
+          "1 Reis 12:1-20",
+        ),
+      ],
+      exercises: [
+        mc(
+          "O que Salomão pediu a Deus?",
+          ["Sabedoria para governar", "Riquezas", "Vitória sobre os inimigos", "Vida longa"],
+          0,
+          "Ele pediu um coração que soubesse ouvir e discernir.",
+          "1 Reis 3:9",
+        ),
+        tf(
+          "Salomão construiu o templo em Jerusalém.",
+          true,
+          "1 Reis 6 descreve a construção do templo.",
+          "1 Reis 6:1",
+        ),
+        match(
+          "Associe cada reino à sua região.",
+          [
+            ["Israel", "Norte"],
+            ["Judá", "Sul, com Jerusalém"],
+          ],
+          "Depois de Salomão, o reino se dividiu em dois.",
+          "1 Reis 12:16-20",
+        ),
+        fill(
+          "O filho de Salomão que viu o reino se dividir chamava-se",
+          ".",
+          ["Roboão", "Absalão", "Josias"],
+          0,
+          "Roboão herdou o trono, mas as tribos do norte o rejeitaram.",
+          "1 Reis 12:1-20",
+        ),
+        order(
+          "Ordene os reis.",
+          ["Saul", "Davi", "Salomão", "Roboão"],
+          "Saul foi o primeiro rei; depois Davi, Salomão e Roboão.",
+          "1 Samuel - 1 Reis 12",
+        ),
+      ],
+      takeaways: [
+        "Salomão pediu sabedoria e construiu o templo.",
+        "Depois dele, o reino se dividiu em Israel (norte) e Judá (sul).",
+        "Saul, Davi e Salomão foram os reis do reino unido.",
+      ],
+      reflection: "Se pudesse pedir uma única qualidade, qual seria?",
+    },
+    {
+      slug: "g05-os-profetas",
+      title: "Os profetas: vozes em tempos difíceis",
+      objective: "Entender quem eram os profetas e qual era sua missão.",
+      references: ["1 Reis 17:1", "Isaías 1:16-17", "Jeremias 1:4-10", "Amós 5:24"],
+      context:
+        "Nos tempos dos reis, surgiram profetas que falavam em nome de Deus ao povo e aos governantes. Alguns têm livros com seu nome; outros aparecem em narrativas, como Elias.",
+      blocks: [
+        b(
+          "explicacao",
+          "Mais que prever o futuro",
+          "Na Bíblia, profeta é principalmente alguém que fala em nome de Deus. Os profetas denunciavam injustiças, chamavam o povo à fidelidade e também anunciavam esperança.",
+        ),
+        b(
+          "resumo",
+          "Justiça como um rio",
+          "O profeta Amós pede que o direito corra como as águas e a justiça como um rio que não seca. Isaías chama o povo a aprender a fazer o bem e defender o órfão e a viúva.",
+          "Amós 5:24; Isaías 1:17",
+        ),
+        b(
+          "contexto",
+          "Exílio e retorno",
+          "O reino do norte caiu diante da Assíria (722 a.C.), e Judá foi levado ao exílio na Babilônia (586 a.C.). Profetas como Jeremias e Ezequiel atuaram nesse período, e outros falaram no retorno.",
+          "2 Reis 17; 25",
+        ),
+        b(
+          "explicacao",
+          "Profetas “maiores” e “menores”",
+          "Isaías, Jeremias, Ezequiel e Daniel são chamados de profetas maiores pelo tamanho dos livros, não pela importância. Doze livros mais curtos, de Oseias a Malaquias, são chamados de profetas menores.",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Qual é a principal missão de um profeta na Bíblia?",
+          ["Falar em nome de Deus ao povo", "Governar o reino", "Construir o templo", "Comandar o exército"],
+          0,
+          "Profetas falavam em nome de Deus, denunciando injustiças e anunciando esperança.",
+          "Jeremias 1:9",
+        ),
+        fill(
+          "Amós pede que a justiça corra como um",
+          "que não seca.",
+          ["rio", "vento", "fogo"],
+          0,
+          "A imagem está em Amós 5:24.",
+          "Amós 5:24",
+        ),
+        tf(
+          "“Profetas menores” são menos importantes que os “maiores”.",
+          false,
+          "Os nomes se referem ao tamanho dos livros, não à importância.",
+          "Introdução aos profetas",
+        ),
+        match(
+          "Associe cada império ao acontecimento.",
+          [
+            ["Assíria", "Queda do reino do norte"],
+            ["Babilônia", "Exílio de Judá"],
+          ],
+          "Israel caiu diante da Assíria; Judá foi levado à Babilônia.",
+          "2 Reis 17; 25",
+        ),
+        mc(
+          "Qual destes é um profeta que aparece em narrativas, sem livro com seu nome?",
+          ["Elias", "Isaías", "Jeremias", "Amós"],
+          0,
+          "Elias aparece nos livros dos Reis, mas não tem um livro próprio.",
+          "1 Reis 17-2 Reis 2",
+        ),
+      ],
+      takeaways: [
+        "Profetas falavam em nome de Deus, especialmente sobre justiça e fidelidade.",
+        "Atuaram em tempos de crise: queda do norte e exílio na Babilônia.",
+        "“Maiores” e “menores” se refere ao tamanho dos livros.",
+      ],
+      reflection: "Que injustiça do seu tempo você acha que um profeta denunciaria?",
+    },
+  ],
+  review: {
+    slug: "g05-revisao",
+    title: "Revisão: Reis, salmos e profetas",
+    intro: "Reis, poemas e profetas: vamos relembrar esse período agitado da história de Israel.",
+    extra: [
+      order(
+        "Ordene os acontecimentos.",
+        ["Saul é ungido", "Davi conquista Jerusalém", "Salomão constrói o templo", "O reino se divide"],
+        "1 Samuel 10; 2 Samuel 5; 1 Reis 6; 12.",
+        "1 Samuel - 1 Reis",
+      ),
+      match(
+        "Associe cada personagem a uma característica.",
+        [
+          ["Samuel", "Profeta que ungiu reis"],
+          ["Salomão", "Pediu sabedoria"],
+          ["Davi", "Muitos salmos lhe são atribuídos"],
+        ],
+        "Personagens centrais desta unidade.",
+        "1 Samuel 16; 1 Reis 3; Salmos",
+      ),
+      tf(
+        "O exílio na Babilônia atingiu o reino de Judá.",
+        true,
+        "Judá foi levado ao exílio em 586 a.C.",
+        "2 Reis 25",
+      ),
+    ],
+    takeaways: [
+      "Saul, Davi e Salomão governaram o reino unido.",
+      "Os Salmos são orações com emoções de toda a vida.",
+      "Os profetas falaram de justiça e esperança em tempos difíceis.",
+    ],
+  },
+};

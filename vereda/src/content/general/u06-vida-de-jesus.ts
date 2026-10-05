@@ -1,0 +1,410 @@
+import { b, fill, match, mc, order, tf, type UnitDef } from "../schema";
+
+export const u06: UnitDef = {
+  slug: "geral-u06-vida-de-jesus",
+  title: "A vida de Jesus",
+  description: "Nascimento, batismo, primeiros discípulos e sinais de Jesus nos Evangelhos.",
+  scene: "village",
+  lessons: [
+    {
+      slug: "g06-nascimento",
+      title: "O nascimento de Jesus",
+      objective: "Conhecer os relatos do nascimento de Jesus em Mateus e Lucas.",
+      references: ["Mateus 1:18-2:12", "Lucas 2:1-20"],
+      context:
+        "Só dois Evangelhos contam o nascimento de Jesus: Mateus e Lucas. Cada um destaca aspectos diferentes, e juntos formam o quadro que conhecemos do Natal.",
+      blocks: [
+        b(
+          "resumo",
+          "Em Lucas: pastores e manjedoura",
+          "Por causa de um recenseamento, José e Maria vão de Nazaré a Belém. Lá, Jesus nasce e é colocado numa manjedoura, porque não havia lugar para eles na hospedaria. Anjos anunciam o nascimento a pastores, que vão visitá-lo.",
+          "Lucas 2:1-20",
+        ),
+        b(
+          "resumo",
+          "Em Mateus: os magos",
+          "Mateus conta que magos vindos do Oriente seguem uma estrela, passam por Jerusalém e chegam a Belém, onde oferecem ouro, incenso e mirra. O texto não diz que eram três nem que eram reis — isso veio da tradição posterior, a partir dos três presentes.",
+          "Mateus 2:1-12",
+        ),
+        b(
+          "contexto",
+          "Uma família comum de Nazaré",
+          "Jesus cresceu em Nazaré, uma pequena vila da Galileia. José é apresentado como carpinteiro (ou artesão).",
+          "Mateus 13:55; Lucas 2:39-40",
+        ),
+      ],
+      exercises: [
+        match(
+          "Associe cada Evangelho ao que ele conta do nascimento.",
+          [
+            ["Lucas", "Pastores e manjedoura"],
+            ["Mateus", "Magos e estrela"],
+          ],
+          "Lucas e Mateus destacam aspectos diferentes do nascimento.",
+          "Lucas 2; Mateus 2",
+        ),
+        mc(
+          "Em que cidade Jesus nasceu, segundo Mateus e Lucas?",
+          ["Belém", "Nazaré", "Jerusalém", "Cafarnaum"],
+          0,
+          "Os dois Evangelhos situam o nascimento em Belém.",
+          "Mateus 2:1; Lucas 2:4-7",
+        ),
+        tf(
+          "O Evangelho de Mateus diz que os magos eram três reis.",
+          false,
+          "O texto fala de magos e de três presentes; “três reis” vem da tradição posterior.",
+          "Mateus 2:1-11",
+        ),
+        fill(
+          "Os presentes dos magos foram ouro, incenso e",
+          ".",
+          ["mirra", "prata", "perfume de nardo"],
+          0,
+          "Mateus 2:11 lista ouro, incenso e mirra.",
+          "Mateus 2:11",
+        ),
+        mc(
+          "Por que José e Maria foram a Belém, segundo Lucas?",
+          ["Por causa de um recenseamento", "Para fugir de uma guerra", "Para uma festa", "Para comprar terras"],
+          0,
+          "Lucas menciona um recenseamento ordenado por César Augusto.",
+          "Lucas 2:1-5",
+        ),
+      ],
+      takeaways: [
+        "Mateus e Lucas contam o nascimento com destaques diferentes.",
+        "Jesus nasceu em Belém e cresceu em Nazaré.",
+        "O número “três” para os magos vem da tradição, não do texto.",
+      ],
+      reflection: "Os primeiros a receber a notícia foram pastores. O que isso diz para você?",
+    },
+    {
+      slug: "g06-batismo",
+      title: "João Batista e o batismo de Jesus",
+      objective: "Conhecer João Batista e o batismo de Jesus no Jordão.",
+      references: ["Marcos 1:1-11", "Mateus 3:1-17", "Lucas 3:1-22"],
+      context:
+        "Antes de Jesus começar sua atividade pública, aparece no deserto um pregador chamado João, conhecido como João Batista. Atenção: ele não é o apóstolo João, filho de Zebedeu!",
+      blocks: [
+        b(
+          "resumo",
+          "Uma voz no deserto",
+          "João Batista vivia no deserto, vestia roupas de pelo de camelo e se alimentava de gafanhotos e mel silvestre. Ele chamava as pessoas a mudarem de vida e as batizava no rio Jordão.",
+          "Marcos 1:4-6",
+        ),
+        b(
+          "resumo",
+          "O batismo de Jesus",
+          "Jesus vem de Nazaré e é batizado por João no Jordão. Ao sair da água, o Espírito desce como uma pomba e uma voz do céu diz: “Tu és o meu Filho amado”.",
+          "Marcos 1:9-11",
+        ),
+        b(
+          "explicacao",
+          "Dois Joões diferentes",
+          "João Batista era parente de Jesus segundo Lucas e foi preso e morto por ordem de Herodes Antipas. O apóstolo João, filho de Zebedeu, era um pescador chamado por Jesus para ser discípulo.",
+          "Lucas 1:36; Marcos 6:17-29; Marcos 1:19-20",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Em qual rio Jesus foi batizado?",
+          ["Jordão", "Nilo", "Eufrates", "Tigre"],
+          0,
+          "João batizava no rio Jordão.",
+          "Marcos 1:9",
+        ),
+        tf(
+          "João Batista e o apóstolo João são a mesma pessoa.",
+          false,
+          "São pessoas diferentes: João Batista pregava no deserto; o apóstolo João era filho de Zebedeu.",
+          "Marcos 1:4; 1:19",
+        ),
+        fill(
+          "Depois do batismo, o Espírito desceu como uma",
+          ".",
+          ["pomba", "chama", "águia"],
+          0,
+          "Os Evangelhos descrevem o Espírito descendo como uma pomba.",
+          "Marcos 1:10",
+        ),
+        match(
+          "Associe cada João à sua descrição.",
+          [
+            ["João Batista", "Pregava e batizava no deserto"],
+            ["João, filho de Zebedeu", "Pescador chamado como discípulo"],
+          ],
+          "Os dois Joões têm papéis diferentes.",
+          "Marcos 1:4-5; 1:19-20",
+        ),
+        mc(
+          "O que a voz do céu diz no batismo?",
+          ["“Tu és o meu Filho amado”", "“Sai da tua terra”", "“Eis-me aqui”", "“Levanta-te e anda”"],
+          0,
+          "A voz declara Jesus como Filho amado.",
+          "Marcos 1:11",
+        ),
+      ],
+      takeaways: [
+        "João Batista pregava no deserto e batizava no Jordão.",
+        "No batismo de Jesus, o Espírito desce como pomba.",
+        "João Batista não é o apóstolo João.",
+      ],
+      reflection: "João chamava as pessoas a mudarem de vida. Que pequena mudança faria bem a você?",
+    },
+    {
+      slug: "g06-tentacoes",
+      title: "Tentações no deserto",
+      objective: "Conhecer o relato das tentações de Jesus.",
+      references: ["Mateus 4:1-11", "Lucas 4:1-13"],
+      context: "Depois do batismo, os Evangelhos contam que Jesus foi levado ao deserto, onde jejuou por quarenta dias.",
+      blocks: [
+        b(
+          "resumo",
+          "Três propostas",
+          "O tentador propõe que Jesus transforme pedras em pães, que se jogue do alto do templo e que adore o diabo em troca dos reinos do mundo.",
+          "Mateus 4:3-9",
+        ),
+        b(
+          "resumo",
+          "Respostas com as Escrituras",
+          "Jesus responde a cada proposta citando Deuteronômio. Por exemplo: o ser humano não vive só de pão, mas de toda palavra que vem de Deus.",
+          "Mateus 4:4; Deuteronômio 8:3",
+        ),
+        b(
+          "explicacao",
+          "Quarenta dias",
+          "O número quarenta aparece em vários momentos bíblicos de preparação e prova, como os quarenta anos de Israel no deserto. Muitas igrejas vivem a Quaresma, de cerca de quarenta dias, inspiradas nesse relato.",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Por quantos dias Jesus jejuou no deserto?",
+          ["Quarenta", "Sete", "Três", "Doze"],
+          0,
+          "Mateus e Lucas falam de quarenta dias.",
+          "Mateus 4:2",
+        ),
+        fill(
+          "Jesus responde: o ser humano não vive só de",
+          ".",
+          ["pão", "água", "trabalho"],
+          0,
+          "Ele cita Deuteronômio 8:3.",
+          "Mateus 4:4",
+        ),
+        tf(
+          "Jesus responde às tentações citando as Escrituras.",
+          true,
+          "As respostas vêm de Deuteronômio.",
+          "Mateus 4:4, 7, 10",
+        ),
+        order(
+          "Ordene as tentações como aparecem em Mateus.",
+          ["Pedras em pães", "Jogar-se do alto do templo", "Adorar em troca dos reinos"],
+          "Lucas apresenta as duas últimas em ordem inversa.",
+          "Mateus 4:3-9",
+        ),
+        mc(
+          "Qual período do ano cristão se inspira nesses quarenta dias?",
+          ["Quaresma", "Advento", "Pentecostes", "Natal"],
+          0,
+          "A Quaresma prepara a Páscoa por cerca de quarenta dias.",
+          "Tradição cristã",
+        ),
+      ],
+      takeaways: [
+        "Jesus jejuou quarenta dias no deserto.",
+        "Ele respondeu às tentações com as Escrituras.",
+        "Mateus e Lucas trazem as tentações em ordens diferentes.",
+      ],
+      reflection: "Qual “atalho” costuma ser mais tentador para você?",
+    },
+    {
+      slug: "g06-primeiros-discipulos",
+      title: "O chamado dos primeiros discípulos",
+      objective: "Conhecer como Jesus chamou seus primeiros discípulos à beira do lago.",
+      references: ["Marcos 1:16-20", "Lucas 5:1-11", "Marcos 3:13-19"],
+      context:
+        "Jesus começa sua atividade na Galileia, perto do mar da Galileia — na verdade, um grande lago, também chamado de lago de Genesaré ou de Tiberíades.",
+      blocks: [
+        b(
+          "resumo",
+          "Pescadores de gente",
+          "Andando à beira do lago, Jesus vê os irmãos Simão (Pedro) e André lançando redes e os chama: “Sigam-me, e farei de vocês pescadores de gente”. Eles deixam as redes e o seguem.",
+          "Marcos 1:16-18",
+        ),
+        b(
+          "resumo",
+          "Os filhos de Zebedeu",
+          "Um pouco adiante, Jesus vê Tiago e João, filhos de Zebedeu, consertando redes no barco. Ele os chama, e eles deixam o pai com os empregados e o seguem.",
+          "Marcos 1:19-20",
+        ),
+        b(
+          "resumo",
+          "A pesca abundante (em Lucas)",
+          "Lucas conta que, depois de uma noite sem pescar nada, Simão lança as redes a pedido de Jesus e pega tantos peixes que as redes quase se rompem. Assustado, Simão se ajoelha, e Jesus diz que dali em diante ele pescaria pessoas.",
+          "Lucas 5:4-11",
+        ),
+        b(
+          "explicacao",
+          "Os Doze",
+          "Mais tarde, Jesus escolhe doze apóstolos, entre eles Pedro, André, Tiago, João, Mateus e Judas Iscariotes.",
+          "Marcos 3:13-19",
+        ),
+      ],
+      exercises: [
+        match(
+          "Associe os irmãos.",
+          [
+            ["Simão Pedro", "André"],
+            ["Tiago", "João"],
+          ],
+          "Pedro e André eram irmãos; Tiago e João também, filhos de Zebedeu.",
+          "Marcos 1:16-19",
+        ),
+        fill(
+          "Jesus diz: “Farei de vocês pescadores de",
+          "”.",
+          ["gente", "peixes", "estrelas"],
+          0,
+          "A expressão está em Marcos 1:17.",
+          "Marcos 1:17",
+        ),
+        tf(
+          "Tiago e João deixaram o pai, Zebedeu, no barco para seguir Jesus.",
+          true,
+          "Marcos 1:20 diz que eles deixaram o pai com os empregados.",
+          "Marcos 1:20",
+        ),
+        mc(
+          "Quantos apóstolos Jesus escolheu?",
+          ["Doze", "Sete", "Setenta", "Três"],
+          0,
+          "Marcos 3 lista os Doze.",
+          "Marcos 3:14-19",
+        ),
+        order(
+          "Ordene o relato de Lucas 5.",
+          ["Noite sem pescar nada", "Jesus pede para lançar as redes", "As redes quase se rompem", "Jesus fala em pescar pessoas"],
+          "Lucas 5:5-10.",
+          "Lucas 5:4-11",
+        ),
+      ],
+      takeaways: [
+        "Os primeiros discípulos eram pescadores do mar da Galileia.",
+        "Pedro e André, Tiago e João foram chamados à beira do lago.",
+        "Jesus escolheu doze apóstolos.",
+      ],
+      reflection: "O que você sentiria se tivesse que deixar as “redes” do seu dia a dia para seguir algo novo?",
+    },
+    {
+      slug: "g06-sinais",
+      title: "Sinais e curas",
+      objective: "Conhecer alguns sinais e curas narrados nos Evangelhos.",
+      references: ["João 2:1-11", "Marcos 2:1-12", "Marcos 4:35-41"],
+      context:
+        "Os Evangelhos contam muitos milagres de Jesus. O Evangelho de João os chama de “sinais”: acontecimentos que apontam para quem Jesus é.",
+      blocks: [
+        b(
+          "resumo",
+          "Água em vinho",
+          "Numa festa de casamento em Caná da Galileia, o vinho acaba. A pedido de sua mãe, Jesus transforma água em vinho. João diz que esse foi o primeiro de seus sinais.",
+          "João 2:1-11",
+        ),
+        b(
+          "resumo",
+          "Pelo telhado",
+          "Em Cafarnaum, a casa está tão cheia que quatro amigos abrem o telhado e descem um paralítico até Jesus. Jesus perdoa seus pecados e o cura, e o homem sai carregando a maca.",
+          "Marcos 2:1-12",
+        ),
+        b(
+          "resumo",
+          "A tempestade acalmada",
+          "Numa travessia do lago, uma tempestade assusta os discípulos, enquanto Jesus dorme no barco. Acordado, ele acalma o vento e o mar e pergunta por que tinham tanto medo.",
+          "Marcos 4:35-41",
+        ),
+      ],
+      exercises: [
+        mc(
+          "Onde Jesus transformou água em vinho?",
+          ["Caná da Galileia", "Jerusalém", "Belém", "Jericó"],
+          0,
+          "O sinal acontece numa festa de casamento em Caná.",
+          "João 2:1-11",
+        ),
+        tf(
+          "Os amigos do paralítico abriram o telhado para levá-lo até Jesus.",
+          true,
+          "Marcos 2:4 descreve o telhado aberto.",
+          "Marcos 2:4",
+        ),
+        fill(
+          "O Evangelho de João chama os milagres de",
+          ".",
+          ["sinais", "parábolas", "salmos"],
+          0,
+          "Para João, os milagres são sinais que apontam para quem Jesus é.",
+          "João 2:11; 20:30-31",
+        ),
+        match(
+          "Associe cada sinal ao lugar ou situação.",
+          [
+            ["Água em vinho", "Festa de casamento"],
+            ["Cura do paralítico", "Casa cheia em Cafarnaum"],
+            ["Tempestade acalmada", "Travessia do lago"],
+          ],
+          "Cada sinal acontece num contexto diferente.",
+          "João 2; Marcos 2; Marcos 4",
+        ),
+        mc(
+          "O que Jesus fazia no barco quando a tempestade começou?",
+          ["Dormia", "Pescava", "Remava", "Cantava"],
+          0,
+          "Jesus dormia na popa do barco.",
+          "Marcos 4:38",
+        ),
+      ],
+      takeaways: [
+        "João chama os milagres de “sinais”.",
+        "Em Caná, Jesus transforma água em vinho.",
+        "Curas e a tempestade acalmada mostram cuidado e autoridade.",
+      ],
+      reflection: "Os amigos do paralítico não desistiram. Quem você ajudaria a “levar pelo telhado”?",
+    },
+  ],
+  review: {
+    slug: "g06-revisao",
+    title: "Revisão: A vida de Jesus",
+    intro: "Do nascimento aos primeiros sinais: vamos relembrar o começo da história de Jesus.",
+    extra: [
+      order(
+        "Ordene os acontecimentos.",
+        ["Nascimento em Belém", "Batismo no Jordão", "Tentações no deserto", "Chamado dos primeiros discípulos"],
+        "Essa é a ordem geral dos Evangelhos sinóticos.",
+        "Mateus 1-4; Marcos 1",
+      ),
+      match(
+        "Associe cada pessoa ao seu papel.",
+        [
+          ["João Batista", "Batizou Jesus"],
+          ["Simão Pedro", "Pescador chamado à beira do lago"],
+          ["Maria", "Mãe de Jesus, presente em Caná"],
+        ],
+        "Personagens desta unidade.",
+        "Marcos 1; João 2",
+      ),
+      tf(
+        "Somente Mateus e Lucas contam o nascimento de Jesus.",
+        true,
+        "Marcos e João começam a narrativa em outro momento.",
+        "Mateus 1-2; Lucas 1-2",
+      ),
+    ],
+    takeaways: [
+      "Mateus e Lucas narram o nascimento com destaques diferentes.",
+      "João Batista prepara o caminho; não confunda com o apóstolo João.",
+      "Os primeiros discípulos e os sinais marcam o início da missão.",
+    ],
+  },
+};
