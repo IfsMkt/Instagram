@@ -7,8 +7,8 @@ import {Caption} from './Caption';
 
 export type Zoom = {s: number; tx: number; ty: number};
 
-/** Zoom máximo: acima disso a imagem do celular começa a perder nitidez. */
-const MAX_ZOOM = 2.2;
+/** Zoom máximo: a gravação é 480×854; acima disso a imagem começa a perder nitidez. */
+const MAX_ZOOM = 1.6;
 
 /** Zoom suave: começa no quadro inteiro e aproxima da área `zoom` em ~1 s. */
 export const useZoom = (seg: Segment | null): Zoom => {
@@ -50,7 +50,8 @@ export const Footage: React.FC<{
   const z = useZoom(seg);
   const speed = seg.speed ?? 1;
   const startFrom = Math.round(seg.in * FPS);
-  const endAt = Math.round(seg.out * FPS);
+  // em câmera lenta o Remotion conta endAt em quadros de saída
+  const endAt = speed < 1 ? startFrom + Math.ceil(((seg.out - seg.in) * FPS) / speed) : Math.round(seg.out * FPS);
   if (!SOURCE) return <FootagePlaceholder />;
   const t = seg.in + (f / FPS) * speed;
   const cue = speed === 1 ? SPEECH.find((c) => t >= c.in && t < c.out) : undefined;

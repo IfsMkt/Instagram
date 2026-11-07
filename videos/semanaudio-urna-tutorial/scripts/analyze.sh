@@ -23,7 +23,7 @@ echo "Duração: ${DUR}s"
 
 # Proxy de edição: 1080x1920, 30 fps constante, rotação aplicada.
 ffmpeg -hide_banner -loglevel error -y -i "$SRC" \
-  -vf "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
+  -vf "scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,unsharp=5:5:0.7,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
   -c:v libx264 -crf 16 -preset medium -g 30 -c:a aac -b:a 256k -ar 48000 public/source/urna.mp4
 
 # Quadros a cada 1 s com o tempo gravado.

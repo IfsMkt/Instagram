@@ -3,3 +3,8 @@ out/*.png
 out/frames
 analysis/frames
 public/source/urna.mp4
+analysis/audio16k.wav
+analysis/silences-intro.txt
+analysis/transcricao-intro.json
+public/audio/voz.wav
+out/chk

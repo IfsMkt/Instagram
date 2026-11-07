@@ -1,0 +1,50 @@
+frame=    0 fps=0.0 q=-0.0 size=       0kB time=00:00:00.12 bitrate=   0.0kbits/s speed= 7.8x    frame=  211 fps=0.0 q=-0.0 size=N/A time=00:00:07.14 bitrate=N/A speed=13.8x    frame=  436 fps=428 q=-0.0 size=N/A time=00:00:14.63 bitrate=N/A speed=14.4x    frame=  663 fps=434 q=-0.0 size=N/A time=00:00:22.25 bitrate=N/A speed=14.6x    frame=  883 fps=435 q=-0.0 size=N/A time=00:00:29.54 bitrate=N/A speed=14.6x    [silencedetect @ 0x56232d92ce80] silence_start: 35.5045
+[silencedetect @ 0x56232d92ce80] silence_end: 37.3753 | silence_duration: 1.87075
+frame= 1118 fps=442 q=-0.0 size=N/A time=00:00:37.39 bitrate=N/A speed=14.8x    [silencedetect @ 0x56232d92ce80] silence_start: 37.3768
+[silencedetect @ 0x56232d92ce80] silence_end: 38.6322 | silence_duration: 1.25537
+[silencedetect @ 0x56232d92ce80] silence_start: 38.6347
+[silencedetect @ 0x56232d92ce80] silence_end: 44.0507 | silence_duration: 5.41598
+[silencedetect @ 0x56232d92ce80] silence_start: 44.0574
+[silencedetect @ 0x56232d92ce80] silence_end: 45.0294 | silence_duration: 0.971958
+frame= 1366 fps=450 q=-0.0 size=N/A time=00:00:45.65 bitrate=N/A speed=  15x    [silencedetect @ 0x56232d92ce80] silence_start: 49.0924
+[silencedetect @ 0x56232d92ce80] silence_end: 51.7018 | silence_duration: 2.60942
+frame= 1622 fps=458 q=-0.0 size=N/A time=00:00:54.18 bitrate=N/A speed=15.3x    [silencedetect @ 0x56232d92ce80] silence_start: 53.8939
+[silencedetect @ 0x56232d92ce80] silence_end: 54.7954 | silence_duration: 0.901458
+[silencedetect @ 0x56232d92ce80] silence_start: 56.2589
+[silencedetect @ 0x56232d92ce80] silence_end: 57.1451 | silence_duration: 0.886208
+frame= 1832 fps=453 q=-0.0 size=N/A time=00:01:01.18 bitrate=N/A speed=15.1x    [silencedetect @ 0x56232d92ce80] silence_start: 63.4586
+[silencedetect @ 0x56232d92ce80] silence_end: 65.7864 | silence_duration: 2.32777
+[silencedetect @ 0x56232d92ce80] silence_start: 65.7916
+frame= 2065 fps=455 q=-0.0 size=N/A time=00:01:08.94 bitrate=N/A speed=15.2x    frame= 2312 fps=458 q=-0.0 size=N/A time=00:01:17.18 bitrate=N/A speed=15.3x    [silencedetect @ 0x56232d92ce80] silence_end: 82.8082 | silence_duration: 17.0166
+[silencedetect @ 0x56232d92ce80] silence_start: 82.8385
+frame= 2511 fps=453 q=-0.0 size=N/A time=00:01:23.81 bitrate=N/A speed=15.1x    [silencedetect @ 0x56232d92ce80] silence_end: 88.3423 | silence_duration: 5.50379
+[silencedetect @ 0x56232d92ce80] silence_start: 88.7563
+[silencedetect @ 0x56232d92ce80] silence_end: 89.9829 | silence_duration: 1.2266
+frame= 2702 fps=446 q=-0.0 size=N/A time=00:01:30.17 bitrate=N/A speed=14.9x    [silencedetect @ 0x56232d92ce80] silence_start: 90.0438
+[silencedetect @ 0x56232d92ce80] silence_end: 92.0916 | silence_duration: 2.0479
+[silencedetect @ 0x56232d92ce80] silence_start: 93.2982
+frame= 2934 fps=448 q=-0.0 size=N/A time=00:01:37.92 bitrate=N/A speed=14.9x    [silencedetect @ 0x56232d92ce80] silence_end: 98.0546 | silence_duration: 4.75642
+[silencedetect @ 0x56232d92ce80] silence_start: 98.06
+[silencedetect @ 0x56232d92ce80] silence_end: 100.842 | silence_duration: 2.78233
+[silencedetect @ 0x56232d92ce80] silence_start: 100.889
+frame= 3133 fps=443 q=-0.0 size=N/A time=00:01:44.53 bitrate=N/A speed=14.8x    [silencedetect @ 0x56232d92ce80] silence_end: 105.361 | silence_duration: 4.47213
+[silencedetect @ 0x56232d92ce80] silence_start: 105.453
+[silencedetect @ 0x56232d92ce80] silence_end: 108.606 | silence_duration: 3.15246
+[silencedetect @ 0x56232d92ce80] silence_start: 108.613
+frame= 3374 fps=446 q=-0.0 size=N/A time=00:01:52.57 bitrate=N/A speed=14.9x    [silencedetect @ 0x56232d92ce80] silence_end: 113.748 | silence_duration: 5.13435
+[silencedetect @ 0x56232d92ce80] silence_start: 114.323
+frame= 3585 fps=444 q=-0.0 size=N/A time=00:01:59.63 bitrate=N/A speed=14.8x    [silencedetect @ 0x56232d92ce80] silence_end: 121.062 | silence_duration: 6.73846
+[silencedetect @ 0x56232d92ce80] silence_start: 121.063
+frame= 3828 fps=446 q=-0.0 size=N/A time=00:02:07.70 bitrate=N/A speed=14.9x    [silencedetect @ 0x56232d92ce80] silence_end: 133.3 | silence_duration: 12.2373
+[silencedetect @ 0x56232d92ce80] silence_start: 133.306
+frame= 4087 fps=450 q=-0.0 size=N/A time=00:02:16.32 bitrate=N/A speed=  15x    frame= 4339 fps=453 q=-0.0 size=N/A time=00:02:24.74 bitrate=N/A speed=15.1x    [silencedetect @ 0x56232d92ce80] silence_end: 151.981 | silence_duration: 18.6749
+[silencedetect @ 0x56232d92ce80] silence_start: 151.982
+frame= 4608 fps=457 q=-0.0 size=N/A time=00:02:33.70 bitrate=N/A speed=15.3x    [silencedetect @ 0x56232d92ce80] silence_end: 154.153 | silence_duration: 2.17098
+[silencedetect @ 0x56232d92ce80] silence_start: 154.344
+[silencedetect @ 0x56232d92ce80] silence_end: 161.19 | silence_duration: 6.84627
+[silencedetect @ 0x56232d92ce80] silence_start: 161.337
+frame= 4870 fps=460 q=-0.0 size=N/A time=00:02:42.47 bitrate=N/A speed=15.3x    [silencedetect @ 0x56232d92ce80] silence_end: 163.226 | silence_duration: 1.88869
+[silencedetect @ 0x56232d92ce80] silence_start: 163.242
+[silencedetect @ 0x56232d92ce80] silence_end: 166.488 | silence_duration: 3.24598
+[silencedetect @ 0x56232d92ce80] silence_start: 168.033
+[silencedetect @ 0x56232d92ce80] silence_end: 171.584 | silence_duration: 3.55077

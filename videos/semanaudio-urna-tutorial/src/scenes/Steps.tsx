@@ -3,7 +3,7 @@ import {AbsoluteFill, Audio, Sequence, Series, staticFile} from 'remotion';
 import {STEPS} from '../edit';
 import {Footage, FootagePlaceholder} from '../components/Footage';
 import {Highlight} from '../components/Highlight';
-import {ResultSeal, StepBadge} from '../components/StepBadge';
+import {ResultSeal, SegLabel, StepBadge} from '../components/StepBadge';
 import {Title} from '../components/Title';
 import {segFrames, stepFrames} from '../timeline';
 import {C, FONT_TEXT, SAFE} from '../theme';
@@ -23,6 +23,7 @@ export const Steps: React.FC = () => {
               <Series.Sequence key={k} durationInFrames={segFrames(seg)}>
                 <Footage seg={seg}>{(z) => (seg.focus ? <Highlight box={seg.focus} z={z} /> : null)}</Footage>
                 {seg.result ? <ResultSeal /> : null}
+                {seg.label ? <SegLabel text={seg.label} /> : null}
               </Series.Sequence>
             ))}
           </Series>

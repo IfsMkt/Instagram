@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import {OPENING} from '../edit';
-import {Backdrop, StageLight} from '../components/Backgrounds';
+import {StageLight} from '../components/Backgrounds';
 import {Footage, FootagePlaceholder} from '../components/Footage';
 import {Title} from '../components/Title';
 import {C} from '../theme';
@@ -12,8 +12,8 @@ export const Opening: React.FC = () => {
   const flash = interpolate(f, [0, 3, 14], [0, 0.55, 0], {extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: C.black}}>
-      {OPENING ? <Footage seg={OPENING} dim={0.4} captions={false} /> : <FootagePlaceholder />}
-      <Backdrop glowY={0.4} glow={0.9} />
+      {OPENING ? <Footage seg={OPENING} dim={0.15} captions={false} /> : <FootagePlaceholder />}
+      <AbsoluteFill style={{background: 'radial-gradient(ellipse 90% 60% at 50% 45%, rgba(245,130,32,0.22) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.85) 100%)'}} />
       <StageLight intensity={1.1} />
       <AbsoluteFill style={{background: C.orangeHot, opacity: flash, mixBlendMode: 'screen'}} />
       <AbsoluteFill style={{justifyContent: 'center', padding: '0 70px'}}>

@@ -23,7 +23,7 @@ export const Closing: React.FC<{dur: number}> = ({dur}) => {
   const endAt = dur - 100;
   return (
     <AbsoluteFill style={{background: C.black}}>
-      {CLOSING ? <Footage seg={CLOSING} dim={0.5} captions={false} /> : <EventPhoto dur={dur} />}
+      {CLOSING ? <Footage seg={CLOSING} dim={0.3} captions={false} /> : <EventPhoto dur={dur} />}
       <StageLight intensity={0.8} />
       <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.75))'}} />
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', gap: 40, padding: '0 70px'}}>

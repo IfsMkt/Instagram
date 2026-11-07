@@ -1,7 +1,7 @@
 import React from 'react';
 import {Easing, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {C, FONT_DISPLAY, FONT_TEXT, SAFE} from '../theme';
-import {Title} from './Title';
+import {Tag, Title} from './Title';
 
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
@@ -90,3 +90,10 @@ export const ResultSeal: React.FC = () => {
     </div>
   );
 };
+
+/** Etiqueta do trecho (ex.: "CATEGORIA 2/5"). */
+export const SegLabel: React.FC<{text: string}> = ({text}) => (
+  <div style={{position: 'absolute', left: 0, right: 0, top: SAFE.bottom - 110, display: 'flex', justifyContent: 'center'}}>
+    <Tag at={0} size={40} dark>{text}</Tag>
+  </div>
+);

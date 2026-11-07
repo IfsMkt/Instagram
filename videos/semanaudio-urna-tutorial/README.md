@@ -6,20 +6,20 @@ Edição (Remotion + FFmpeg) **sobre a gravação original** da urna. Vertical 1
 
 | Entrega | Status |
 |---|---|
-| 1. Análise do vídeo original | **Pendente: o arquivo `copy_780C9D0A-9EAF-44AD-9A4A-1907209853E7.mp4` não chegou a esta sessão** |
-| 2. Roteiro com tempos exatos dos cortes | Pendente (depende da análise) |
-| 3. Projeto Remotion editável | Pronto (componentes, cenas 1, 2, 4 e 5, trilha e efeitos) |
-| 4. Prévia | `out/previa-urna-tutorial.mp4` (540×960, só grafismos; os trechos de vídeo aparecem como espaços reservados) |
-| 5. MP4 final | Depois da aprovação: `npm run render` |
+| 1. Análise do vídeo original | Pronta: [`analysis/ANALISE.md`](analysis/ANALISE.md) (etapas, transcrição, pranchas `analysis/contact-*.jpg`) |
+| 2. Roteiro com tempos exatos dos cortes | Pronto: em `analysis/ANALISE.md` e aplicado em `src/edit.ts` |
+| 3. Projeto Remotion editável | Pronto |
+| 4. Prévia | `out/previa-urna-tutorial.mp4` (540×960, 59,8 s) |
+| 5. MP4 final | Depois da aprovação: `npm run render` gera `out/semanaudio-2026-tutorial-urna.mp4` (1080×1920) |
 
-Nenhum passo da urna foi inventado. A Cena 3 só ganha passos (PASSO 01, 02…) depois que a gravação for analisada.
+Passos (só os que aparecem na gravação): 01 toque para começar · 02 digite seu e-mail · 03 vote nas 5 categorias · 04 meus cupons do sorteio · 05 imprima seu cupom · 06 retire o cupom impresso · 07 próxima pessoa.
 
 ## Fluxo
 
 ```bash
 npm install
 # 1) análise: proxy 30 fps, quadros por segundo, pranchas, trocas de plano, silêncios, transcrição
-bash scripts/analyze.sh /caminho/copy_780C9D0A-9EAF-44AD-9A4A-1907209853E7.mp4
+bash scripts/analyze.sh source/tutorial_urna_semanAudio_leve.mov   # ou o arquivo em resolução cheia
 # 2) voz limpa (redução de ruído + normalização -16 LUFS)
 bash scripts/prep-audio.sh
 # 3) preencher src/edit.ts (passos, cortes, zoom, destaques, transcrição)
@@ -53,7 +53,7 @@ export const STEPS = [
 export const SPEECH = [{in: 20.4, out: 23.1, text: 'fala transcrita'}];
 ```
 
-A duração da Cena 3 (e do vídeo) é a soma dos trechos. A meta é 40 a 60 s no total; as cenas fixas somam 31 s (4 + 8 + 10 + 9), então cabem **9 a 29 s** de demonstração.
+A duração da Cena 3 (e do vídeo) é a soma dos trechos. A meta é 40 a 60 s no total; as cenas fixas somam 30 s (4 + 8 + 10 + 8), então cabem **10 a 30 s** de demonstração.
 
 ## Estrutura
 
@@ -85,3 +85,6 @@ A duração da Cena 3 (e do vídeo) é a soma dos trechos. A meta é 40 a 60 s n
 
 - [ ] Textos das Cenas 2 e 4 conforme o briefing (1.000 moedas / R$ 1.000 = 1 cupom; Pavilhão Subwoofer; sorteio 12/11 às 17h, Palco Luzbel).
 - [ ] Passos da Cena 3 batem com o que aparece na gravação.
+- [ ] O cupom impresso é retirado no próprio totem no evento? (Na gravação, a impressora está numa bancada de teste. O vídeo só diz "Retire seu cupom impresso".)
+- [ ] A gravação mostra votar nas 5 categorias antes de ver os cupons. O vídeo **não** afirma que votar dá cupom.
+- [ ] Tela usa a palavra "pontos" em "Cupons já impressos". O briefing fala em "moedas". Confirmar o termo oficial.

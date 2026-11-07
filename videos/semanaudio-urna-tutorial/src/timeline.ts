@@ -11,7 +11,7 @@ const opening = 4 * FPS;
 const coupons = 8 * FPS;
 const steps = STEPS.length ? stepFrames.reduce((a, b) => a + b, 0) : STEPS_PLACEHOLDER;
 const info = 10 * FPS;
-const closing = 9 * FPS;
+const closing = 8 * FPS;
 
 const at = (arr: number[]) => arr.reduce<number[]>((acc, d, i) => [...acc, i === 0 ? 0 : acc[i - 1] + arr[i - 1]], []);
 const durs = [opening, coupons, steps, info, closing];
