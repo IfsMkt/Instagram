@@ -8,8 +8,10 @@
     "music": "python3 scripts/music.py",
     "studio": "remotion studio src/index.ts",
     "preview": "remotion render src/index.ts UrnaTutorial out/previa-urna-tutorial.mp4 --codec h264 --crf 26 --scale 0.5",
-    "render": "remotion render src/index.ts UrnaTutorial out/semanaudio-2026-tutorial-urna.mp4 --codec h264 --crf 18 --audio-bitrate 320k",
-    "still": "remotion still src/index.ts UrnaTutorial out/still.png"
+    "render": "node scripts/render-final.mjs",
+    "still": "remotion still src/index.ts UrnaTutorial out/still.png",
+    "prep-source": "bash scripts/prep-source.sh",
+    "render:nativo": "node scripts/render-final.mjs --nativo"
   },
   "dependencies": {
     "@remotion/cli": "4.0.364",

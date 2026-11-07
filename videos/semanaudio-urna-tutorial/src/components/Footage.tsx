@@ -4,11 +4,18 @@ import {Box, Segment, SOURCE, SPEECH, VOICE} from '../edit';
 import {segFrames} from '../timeline';
 import {C, FONT_TEXT, FPS, H, W} from '../theme';
 import {Caption} from './Caption';
+import {SOURCE_META} from '../source-meta';
 
 export type Zoom = {s: number; tx: number; ty: number};
 
-/** Zoom máximo: a gravação é 480×854; acima disso a imagem começa a perder nitidez. */
-const MAX_ZOOM = 1.6;
+/**
+ * Zoom máximo, a partir da resolução REAL do original.
+ * `lossless` = quanto dá para aproximar sem ampliar pixels (ex.: 4K → 2×).
+ * Em fonte 1080×1920 o limite fica em ZOOM_FLOOR (aproximação leve e suave).
+ */
+const ZOOM_FLOOR = 1.3;
+const lossless = Math.min(SOURCE_META.width / W, SOURCE_META.height / H);
+export const MAX_ZOOM = Math.min(2.5, Math.max(ZOOM_FLOOR, lossless));
 
 /** Zoom suave: começa no quadro inteiro e aproxima da área `zoom` em ~1 s. */
 export const useZoom = (seg: Segment | null): Zoom => {
@@ -49,24 +56,25 @@ export const Footage: React.FC<{
   const f = useCurrentFrame();
   const z = useZoom(seg);
   const speed = seg.speed ?? 1;
-  const startFrom = Math.round(seg.in * FPS);
+  // tempos de edit.ts foram medidos na versão leve; `offset` alinha ao original
+  const startFrom = Math.round((seg.in + SOURCE_META.offset) * FPS);
   // em câmera lenta o Remotion conta endAt em quadros de saída
-  const endAt = speed < 1 ? startFrom + Math.ceil(((seg.out - seg.in) * FPS) / speed) : Math.round(seg.out * FPS);
+  const endAt = speed < 1 ? startFrom + Math.ceil(((seg.out - seg.in) * FPS) / speed) : Math.round((seg.out + SOURCE_META.offset) * FPS);
   if (!SOURCE) return <FootagePlaceholder />;
   const t = seg.in + (f / FPS) * speed;
   const cue = speed === 1 ? SPEECH.find((c) => t >= c.in && t < c.out) : undefined;
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: C.black}}>
-      <AbsoluteFill style={{transformOrigin: '0 0', transform: `translate(${z.tx}px, ${z.ty}px) scale(${z.s})`}}>
-        <OffthreadVideo
-          src={staticFile(SOURCE)}
-          startFrom={startFrom}
-          endAt={endAt}
-          playbackRate={speed}
-          muted={!!VOICE || speed !== 1}
-          style={{width: W, height: H, objectFit: 'cover'}}
-        />
-      </AbsoluteFill>
+      {/* o vídeo é posicionado no tamanho já ampliado (sem transform: scale),
+          para o navegador amostrar direto do quadro nativo do original */}
+      <OffthreadVideo
+        src={staticFile(SOURCE)}
+        startFrom={startFrom}
+        endAt={endAt}
+        playbackRate={speed}
+        muted={!!VOICE || speed !== 1}
+        style={{position: 'absolute', left: z.tx, top: z.ty, width: W * z.s, height: H * z.s, objectFit: 'cover', maxWidth: 'none'}}
+      />
       {VOICE && speed === 1 ? <Audio src={staticFile(VOICE)} startFrom={startFrom} endAt={endAt} /> : null}
       {dim > 0 ? <AbsoluteFill style={{background: `rgba(0,0,0,${dim})`}} /> : null}
       {children?.(z)}

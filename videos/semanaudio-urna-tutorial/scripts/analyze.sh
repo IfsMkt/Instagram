@@ -10,41 +10,42 @@
 #   contact-NN.jpg    pranchas 4x5 com 20 s cada, com o tempo marcado
 #   audio16k.wav      áudio mono 16 kHz para transcrição
 #   transcricao.*     transcrição (se whisper estiver instalado)
-# E em public/source/urna.mp4 uma cópia H.264 30 fps CFR usada pelo Remotion.
+#   proxy.mp4         cópia 1080x1920 30 fps SÓ para análise (nunca é fonte do render;
+#                     a fonte final vem de scripts/prep-source.sh com o arquivo original)
 set -euo pipefail
 SRC="${1:?informe o arquivo de vídeo original}"
 cd "$(dirname "$0")/.."
 A=analysis
-mkdir -p "$A/frames" public/source
+mkdir -p "$A/frames"
 
 ffprobe -v error -print_format json -show_format -show_streams "$SRC" > "$A/probe.json"
 DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$SRC")
 echo "Duração: ${DUR}s"
 
-# Proxy de edição: 1080x1920, 30 fps constante, rotação aplicada.
+# Proxy de análise: 1080x1920, 30 fps constante, rotação aplicada.
 ffmpeg -hide_banner -loglevel error -y -i "$SRC" \
-  -vf "scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,unsharp=5:5:0.7,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
-  -c:v libx264 -crf 16 -preset medium -g 30 -c:a aac -b:a 256k -ar 48000 public/source/urna.mp4
+  -vf "scale=1080:1920:force_original_aspect_ratio=decrease:flags=lanczos,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,fps=30,format=yuv420p" \
+  -c:v libx264 -crf 16 -preset medium -g 30 -c:a aac -b:a 256k -ar 48000 "$A/proxy.mp4"
 
 # Quadros a cada 1 s com o tempo gravado.
-ffmpeg -hide_banner -loglevel error -y -i public/source/urna.mp4 \
+ffmpeg -hide_banner -loglevel error -y -i "$A/proxy.mp4" \
   -vf "fps=1,scale=360:-2,drawtext=text='%{eif\:t\:d}s':x=10:y=10:fontsize=36:fontcolor=white:box=1:boxcolor=black@0.6" \
   -start_number 0 "$A/frames/t%04d.jpg"
 
 # Pranchas: 20 quadros (20 s) por imagem.
-ffmpeg -hide_banner -loglevel error -y -i public/source/urna.mp4 \
+ffmpeg -hide_banner -loglevel error -y -i "$A/proxy.mp4" \
   -vf "fps=1,scale=270:-2,drawtext=text='%{eif\:t\:d}s':x=8:y=8:fontsize=30:fontcolor=white:box=1:boxcolor=black@0.6,tile=5x4:padding=4:color=black" \
   -start_number 1 "$A/contact-%02d.jpg"
 
 # Mudanças de enquadramento.
-ffmpeg -hide_banner -i public/source/urna.mp4 -vf "select='gt(scene,0.22)',showinfo" -an -f null - 2>&1 \
+ffmpeg -hide_banner -i "$A/proxy.mp4" -vf "select='gt(scene,0.22)',showinfo" -an -f null - 2>&1 \
   | grep -o 'pts_time:[0-9.]*' | cut -d: -f2 > "$A/scenes.txt" || true
 
 # Silêncios (pausas longas).
-ffmpeg -hide_banner -i public/source/urna.mp4 -af "silencedetect=noise=-35dB:d=0.8" -f null - 2>&1 \
+ffmpeg -hide_banner -i "$A/proxy.mp4" -af "silencedetect=noise=-35dB:d=0.8" -f null - 2>&1 \
   | grep -E 'silence_(start|end)' > "$A/silences.txt" || true
 
-ffmpeg -hide_banner -loglevel error -y -i public/source/urna.mp4 -vn -ac 1 -ar 16000 "$A/audio16k.wav"
+ffmpeg -hide_banner -loglevel error -y -i "$A/proxy.mp4" -vn -ac 1 -ar 16000 "$A/audio16k.wav"
 
 if command -v whisper >/dev/null 2>&1; then
   whisper "$A/audio16k.wav" --language pt --model small --output_dir "$A" --output_format all
