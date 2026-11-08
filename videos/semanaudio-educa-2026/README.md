@@ -29,7 +29,7 @@ python3 scripts/music.py    # regenera a trilha (public/audio/trilha.wav)
 
 - **Logo SemanÁudio 2026, ícone de onda e fotos** (mesa de som, truss e ondas laranja) baixados do site oficial `semanaudio.com.br/salvador2026`.
 - Laranja `#F58220`, Bebas Neue e Inter: as mesmas cores e fontes do site oficial.
-- **Logo Educa Áudio:** arquivo oficial fornecido pela cliente, salvo em `public/brand/educa-audio-logo.png` (azul original). No vídeo uso a versão negativa branca `public/brand/educa-audio-logo-branco.png`: mesmo desenho, só a cor muda, para ter contraste no fundo preto. Para voltar ao azul, altere `educaLogo` em `src/Root.tsx`.
+- **Logo Educa Áudio:** arquivo oficial enviado para o projeto, salvo em `public/brand/educa-audio-logo.png` (azul original). No vídeo uso a versão negativa branca `public/brand/educa-audio-logo-branco.png`: mesmo desenho, só a cor muda, para ter contraste no fundo preto. Para voltar ao azul, altere `educaLogo` em `src/Root.tsx`.
 - **Locução: PENDENTE.** Grave a narração (texto em `src/captions.ts`, campo `NARRATION`) e salve em `public/audio/narracao.mp3`. Depois use `narration: 'audio/narracao.mp3'` em `src/Root.tsx`. A trilha abaixa automaticamente quando há locução. Se o ritmo da gravação for diferente, ajuste os tempos em `CUES`.
 
 ## Conferir antes de publicar (regra 5)
