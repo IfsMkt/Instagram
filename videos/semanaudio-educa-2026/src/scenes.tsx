@@ -113,7 +113,7 @@ export const SceneIntro: React.FC<{educaLogo: string | null}> = ({educaLogo}) =>
             +
           </div>
           <Slam at={22} from={1.6}>
-            <EducaLogo src={educaLogo} width={520} />
+            <EducaLogo src={educaLogo} width={460} />
           </Slam>
         </Center>
         <Center top={980}>
@@ -456,7 +456,7 @@ export const SceneClose: React.FC<{educaLogo: string | null}> = ({educaLogo}) =>
         </div>
         <div style={{height: 20}} />
         <Slam at={16} from={1.5}>
-          <EducaLogo src={educaLogo} width={560} />
+          <EducaLogo src={educaLogo} width={480} />
         </Slam>
       </Center>
       <Center top={1020}>

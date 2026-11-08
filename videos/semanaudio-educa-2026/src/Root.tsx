@@ -4,7 +4,7 @@ import {PromoVideo, VideoProps} from './Video';
 import {FPS, H, TOTAL, W} from './theme';
 
 const defaults: VideoProps = {
-  educaLogo: null, // ex.: 'brand/educa-audio-logo.png'
+  educaLogo: 'brand/educa-audio-logo-branco.png', // versão negativa da logo oficial (original azul: brand/educa-audio-logo.png)
   narration: null, // ex.: 'audio/narracao.mp3'
   showCaptions: true,
 };
