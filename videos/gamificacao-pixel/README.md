@@ -26,3 +26,22 @@ Vídeo vertical 1080×1920, 30 fps, 42 s, feito em Remotion. Mostra como funcion
 - **Textos dos diálogos:** `src/Game.tsx`.
 - **Sprites:** `src/pixel.tsx` (1 caractere = 1 pixel).
 - **Cenário e construções:** `src/world.tsx`.
+
+---
+
+# Programa Grandes Compradores (composição `GrandesCompradores`)
+
+Vídeo 1080×1920, 42 s, no mesmo mundo em pixel art. Arquivo: `out/grandes-compradores-pixel-art.mp4`.
+Tempos em `src/compradores.json`. A trilha sai de `python3 scripts/compradores_audio.py`.
+
+| Tempo | O que acontece |
+|---|---|
+| 0–3,5 s | Título "PROGRAMA GRANDES COMPRADORES" com as 4 medalhas. |
+| 3,5–8 s | "SUAS COMPRAS VALEM MUITO MAIS!" e o diálogo de apresentação. |
+| 8–27 s | O personagem compra em 4 expositores. A barra de compras enche e ele sobe de nível: Bronze, Prata, Ouro e Platinum. |
+| 29–35 s | Central de Troca de Cupons (Pavilhão Subwoofer): mostra a nota fiscal ou o pedido e recebe o broche da categoria. |
+| 35–37,5 s | "E TEM MAIS!": a cada R$ 1.000 em compras, 1 cupom para os sorteios. |
+| 38–42 s | Pódio com os 4 níveis, as orientações e o slogan oficial. |
+
+Os valores de compra de cada nível não foram informados, então o vídeo não mostra faixas em reais.
+A quantidade de cupons que aparece no placar é ilustrativa.

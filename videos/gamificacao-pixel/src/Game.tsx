@@ -59,7 +59,7 @@ const couponsAt = (f: number) => (f >= TL.couponGet[1] && f < TL.couponToChest[0
 const prizesAt = (f: number) => (f >= TL.chestOpen + 12 ? 1 : 0);
 
 /* ------------------ peças ------------------ */
-const SpinCoin: React.FC<{x: number; y: number; px?: number; phase?: number}> = ({x, y, px = 8, phase = 0}) => {
+export const SpinCoin: React.FC<{x: number; y: number; px?: number; phase?: number}> = ({x, y, px = 8, phase = 0}) => {
   const f = useCurrentFrame();
   const sx = [1, 0.75, 0.35, 0.75][Math.floor((f + phase) / 5) % 4];
   const w = 10 * px;
@@ -71,7 +71,7 @@ const SpinCoin: React.FC<{x: number; y: number; px?: number; phase?: number}> = 
   );
 };
 
-const Sparkle: React.FC<{at: number; x: number; y: number}> = ({at, x, y}) => {
+export const Sparkle: React.FC<{at: number; x: number; y: number}> = ({at, x, y}) => {
   const f = useCurrentFrame();
   const t = f - at;
   if (t < 0 || t > 14) return null;
@@ -109,7 +109,7 @@ const Hero: React.FC<{x: number; f: number}> = ({x, f}) => {
 };
 
 /** Cupom voando entre dois pontos de tela. */
-const Flyer: React.FC<{from: [number, number]; to: [number, number]; t0: number; t1: number; children: React.ReactNode}> = ({from, to, t0, t1, children}) => {
+export const Flyer: React.FC<{from: [number, number]; to: [number, number]; t0: number; t1: number; children: React.ReactNode}> = ({from, to, t0, t1, children}) => {
   const f = useCurrentFrame();
   if (f < t0 || f > t1) return null;
   const p = (f - t0) / (t1 - t0);
