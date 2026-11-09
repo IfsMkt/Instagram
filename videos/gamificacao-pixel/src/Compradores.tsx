@@ -3,7 +3,7 @@ import {AbsoluteFill, Audio, Img, interpolate, random, staticFile, useCurrentFra
 import T from './compradores.json';
 import {loadFonts} from './fonts';
 import {Flyer, Sparkle, SpinCoin} from './Game';
-import {COUPON, HERO_JUMP, HERO_STAND, HERO_WALK, ICON_BAG, PAL, Sprite} from './pixel';
+import {COIN, COUPON, HERO_JUMP, HERO_STAND, HERO_WALK, ICON_BAG, PAL, Sprite} from './pixel';
 import {PIXEL_FONT, PX, W} from './theme';
 import {Banner, Dialog, PixelWipe, PopText, pixelFrame} from './ui';
 import {Background, Central, Ground} from './world';
@@ -15,12 +15,12 @@ const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const snap = (v: number, s = PX) => Math.round(v / s) * s;
 
 /* ---------------- níveis ---------------- */
-type Tier = {name: string; main: string; dark: string; light: string; ribbon: string; text: string};
+type Tier = {name: string; main: string; dark: string; light: string; ribbon: string; text: string; range: string; r1: string; r2: string};
 export const TIERS: Tier[] = [
-  {name: 'BRONZE', main: '#cd7f32', dark: '#7a4416', light: '#f0b27a', ribbon: '#8a2b1e', text: '#f0a060'},
-  {name: 'PRATA', main: '#c8cdd8', dark: '#7d8396', light: '#ffffff', ribbon: '#2f4a8a', text: '#e4e8f2'},
-  {name: 'OURO', main: '#ffcc33', dark: '#b07a10', light: '#fff2a8', ribbon: '#b0221c', text: '#ffd23f'},
-  {name: 'PLATINUM', main: '#F58220', dark: '#a84a08', light: '#ffe3c4', ribbon: '#14101c', text: '#ff9a42'},
+  {name: 'BRONZE', main: '#cd7f32', dark: '#7a4416', light: '#f0b27a', ribbon: '#8a2b1e', text: '#f0a060', range: 'R$ 50 MIL A R$ 300 MIL', r1: 'R$ 50 MIL', r2: 'A 300 MIL'},
+  {name: 'PRATA', main: '#c8cdd8', dark: '#7d8396', light: '#ffffff', ribbon: '#2f4a8a', text: '#e4e8f2', range: 'R$ 301 MIL A R$ 600 MIL', r1: 'R$ 301 MIL', r2: 'A 600 MIL'},
+  {name: 'OURO', main: '#ffcc33', dark: '#b07a10', light: '#fff2a8', ribbon: '#b0221c', text: '#ffd23f', range: 'R$ 601 MIL A R$ 999 MIL', r1: 'R$ 601 MIL', r2: 'A 999 MIL'},
+  {name: 'PLATINUM', main: '#F58220', dark: '#a84a08', light: '#ffe3c4', ribbon: '#14101c', text: '#ff9a42', range: 'ACIMA DE R$ 999 MIL', r1: 'ACIMA DE', r2: 'R$ 999 MIL'},
 ];
 
 const MEDAL_ROWS = [
@@ -121,6 +121,16 @@ const Stand: React.FC<{i: number; active: boolean}> = ({i, active}) => {
   );
 };
 
+const SpinCoinInline: React.FC = () => {
+  const f = useCurrentFrame();
+  const sxv = [1, 0.75, 0.35, 0.75][Math.floor(f / 5) % 4];
+  return (
+    <div style={{transform: `scaleX(${sxv})`}}>
+      <Sprite rows={COIN} px={8} />
+    </div>
+  );
+};
+
 /* ---------------- movimento ---------------- */
 const charX = (f: number) => interpolate(f, T.charX.map((k) => k[0]), T.charX.map((k) => k[1]), clamp);
 const jumpAt = (f: number) => T.jumps.find(([s, d]) => f >= s && f <= s + d);
@@ -132,7 +142,18 @@ const jumpY = (f: number) => {
 };
 const moving = (f: number) => Math.abs(charX(f + 1) - charX(f)) > 0.5;
 const tierAt = (f: number) => T.unlock.filter((u) => f >= u).length - 1; // -1 = nenhum
-const couponsAt = (f: number) => T.buy.reduce((s, b, i) => (f >= b + 8 ? s + T.couponGain[i] : s), 0);
+const totalAt = (f: number) => {
+  // total em compras (em R$ mil), sobe durante cada compra
+  let prev = 0;
+  let v = 0;
+  T.buy.forEach((b, i) => {
+    if (f >= b) v = Math.round(interpolate(f, [b + 2, T.unlock[i]], [prev, T.totals[i]], clamp));
+    prev = T.totals[i];
+  });
+  return v;
+};
+const fmtMil = (m: number) => (m >= 1000 ? `R$ ${(m / 1000).toFixed(1).replace('.', ',')} MI` : `R$ ${m} MIL`);
+const couponsAt = (f: number) => totalAt(f); // R$ 1.000 = 1 cupom -> total em mil = nº de cupons
 const xpAt = (f: number) => {
   let x = 0;
   T.buy.forEach((b, i) => {
@@ -164,7 +185,7 @@ const HUD: React.FC<{f: number}> = ({f}) => {
   const tier = tierAt(f);
   const xp = xpAt(f);
   const cp = couponsAt(f);
-  const bumpC = T.buy.some((b) => f >= b + 8 && f < b + 14);
+  const bumpC = T.buy.some((b, i) => f >= b + 2 && f < T.unlock[i]);
   const bumpT = T.unlock.some((u) => f >= u && f < u + 8);
   return (
     <div style={{position: 'absolute', left: 60, width: W - 120, top: 170, ...pixelFrame('rgba(16,19,31,0.92)'), padding: '24px 30px 28px', fontFamily: PIXEL_FONT, color: '#fff'}}>
@@ -184,12 +205,15 @@ const HUD: React.FC<{f: number}> = ({f}) => {
           </div>
           <div>
             <div style={{fontSize: 18, color: PAL.P, marginBottom: 10}}>CUPONS</div>
-            <div style={{fontSize: 32, color: bumpC ? PAL.Y : '#fff', textShadow: '3px 3px 0 #14101c'}}>x{cp}</div>
+            <div style={{fontSize: 32, color: bumpC ? PAL.Y : '#fff', textShadow: '3px 3px 0 #14101c'}}>x{cp.toLocaleString('pt-BR')}</div>
           </div>
         </div>
       </div>
       {/* barra de compras */}
-      <div style={{fontSize: 16, color: PAL.P, margin: '22px 0 10px'}}>COMPRAS</div>
+      <div style={{display: 'flex', justifyContent: 'space-between', fontSize: 16, color: PAL.P, margin: '22px 0 10px'}}>
+        <span>TOTAL EM COMPRAS</span>
+        <span style={{color: '#fff', fontSize: 22}}>{fmtMil(totalAt(f))}</span>
+      </div>
       <div style={{position: 'relative', height: 34, background: '#07060f', boxShadow: '0 0 0 4px #ffffff, 0 0 0 8px #14101c'}}>
         <div
           style={{
@@ -205,6 +229,31 @@ const HUD: React.FC<{f: number}> = ({f}) => {
           <div key={i} style={{position: 'absolute', left: `${(i + 1) * 25}%`, top: -6, width: 6, marginLeft: -6, height: 46, background: tier >= i ? t.main : '#555a78'}} />
         ))}
       </div>
+    </div>
+  );
+};
+
+/* ---------------- checklist do broche ---------------- */
+const STEPS = ['FAÇA SUAS COMPRAS NA SEMANÁUDIO', 'VÁ À CENTRAL DE TROCA DE CUPONS (PAVILHÃO SUBWOOFER)', 'APRESENTE NOTAS FISCAIS OU PEDIDOS DE COMPRA', 'RECEBA O BROCHE DA SUA CATEGORIA!'];
+const Checklist: React.FC<{f: number}> = ({f}) => {
+  const [s0, s1] = T.dlgCentral;
+  if (f < s0 || f > s1) return null;
+  const k = Math.min(1, Math.floor((f - s0) / 2) / 4, Math.max(0, Math.floor((s1 - f) / 2) / 4));
+  return (
+    <div style={{position: 'absolute', left: 60, width: W - 120, top: 400, transform: `scaleY(${k})`, ...pixelFrame(), padding: '36px 36px 30px', fontFamily: PIXEL_FONT, color: '#fff'}}>
+      <div style={{fontSize: 32, color: PAL.O, marginBottom: 30, textShadow: '4px 4px 0 #14101c'}}>COMO CONQUISTAR SEU BROCHE?</div>
+      {STEPS.map((st, i) => {
+        const done = f >= T.checks[i];
+        const pop = done && f < T.checks[i] + 6;
+        return (
+          <div key={i} style={{display: 'flex', alignItems: 'flex-start', gap: 22, marginBottom: 24}}>
+            <div style={{width: 44, height: 44, flexShrink: 0, background: done ? PAL.O : 'transparent', boxShadow: '0 0 0 4px #ffffff, 0 0 0 8px #14101c', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, color: '#14101c', transform: `scale(${pop ? 1.3 : 1})`}}>
+              {done ? '✓' : i + 1}
+            </div>
+            <div style={{fontSize: 22, lineHeight: 1.6, color: done ? '#fff' : '#8a8ea6', textShadow: done ? '3px 3px 0 #14101c' : 'none'}}>{st}</div>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -315,8 +364,8 @@ const Level: React.FC = () => {
       {T.buy.map((b, i) => (
         <React.Fragment key={`p${i}`}>
           <Sparkle at={b + 4} x={heroX + 80} y={G - 300} />
-          <PopText at={b + 6} x={heroX + 80} y={G - 470} text="COMPRA!" color={PAL.O} />
-          <PopText at={b + 10} x={heroX + 300} y={G - 420} text={`+${T.couponGain[i]} CUPONS`} />
+          <PopText at={b + 6} x={heroX + 80} y={G - 470} text={`+${fmtMil(T.totals[i] - (i ? T.totals[i - 1] : 0))}`} color={PAL.O} />
+          <PopText at={b + 12} x={heroX + 330} y={G - 400} text="+CUPONS" />
         </React.Fragment>
       ))}
 
@@ -331,7 +380,7 @@ const Level: React.FC = () => {
       <Sparkle at={T.pin[1]} x={heroChest[0]} y={heroChest[1]} />
 
       {/* chuva de cupons do bônus */}
-      {f >= T.bonus[0] + 24
+      {f >= T.bonus[0] + 24 && f < T.bonus[0] + 86
         ? new Array(18).fill(0).map((_, i) => {
             const t = f - T.bonus[0] - 24 - random(`cd${i}`) * 30;
             if (t < 0) return null;
@@ -355,7 +404,7 @@ const Level: React.FC = () => {
         press={T.dlgIntro[2]}
         title="GRANDES COMPRADORES"
         icon={<Medal tier={2} px={3} />}
-        lines={['COMPRE NOS EXPOSITORES', 'E CONQUISTE UM DOS', '4 NÍVEIS DE DESTAQUE!']}
+        lines={['QUANTO MAIOR O VALOR', 'DAS SUAS COMPRAS, MAIOR', 'O SEU NÍVEL!']}
         option="COMEÇAR"
         result="BOAS COMPRAS!"
       />
@@ -365,35 +414,43 @@ const Level: React.FC = () => {
           start={u}
           end={u + T.bannerDur}
           text={`NÍVEL ${TIERS[i].name}!`}
-          sub={i === 3 ? 'O NÍVEL MÁXIMO!' : 'CONTINUE COMPRANDO...'}
+          sub={TIERS[i].range}
           color={TIERS[i].text}
           size={i === 3 ? 62 : 66}
           top={500}
         />
       ))}
-      <Dialog
-        start={T.dlgCentral[0]}
-        end={T.dlgCentral[1]}
-        press={T.dlgCentral[2]}
-        title="CENTRAL DE TROCA"
-        icon={<Sprite rows={RECEIPT} px={4} />}
-        lines={['PAVILHÃO SUBWOOFER.', 'APRESENTE SUA NOTA FISCAL', 'OU PEDIDO DE COMPRA.']}
-        option="MOSTRAR NOTA"
-        result="VALIDANDO..."
-      />
+      <Checklist f={f} />
       <Banner start={T.pinBanner[0]} end={T.pinBanner[1]} text="BROCHE" sub="DA SUA CATEGORIA RECEBIDO!" color={TIERS[3].text} size={84} />
       <Banner start={T.bonus[0]} end={T.bonus[0] + 26} text="E TEM MAIS!" color={PAL.Y} size={76} top={560} />
-      {f >= T.bonus[0] + 24 && f <= T.bonus[1] ? (
+      {f >= T.bonus[0] + 24 && f < T.bonus[0] + 86 ? (
         <div style={{position: 'absolute', left: 70, width: W - 140, top: 470, ...pixelFrame(), padding: '44px 40px', textAlign: 'center', fontFamily: PIXEL_FONT, color: '#fff'}}>
-          <div style={{fontSize: 34, lineHeight: 1.6}}>A CADA</div>
+          <div style={{fontSize: 30, lineHeight: 1.6}}>SUAS COMPRAS VALEM CUPONS!</div>
+          <div style={{fontSize: 30, lineHeight: 1.6, marginTop: 20}}>A CADA</div>
           <div style={{fontSize: 64, color: PAL.Y, margin: '14px 0', textShadow: '6px 6px 0 #14101c'}}>R$ 1.000</div>
-          <div style={{fontSize: 34, lineHeight: 1.6}}>EM COMPRAS</div>
+          <div style={{fontSize: 30, lineHeight: 1.6}}>EM COMPRAS</div>
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 24, margin: '26px 0'}}>
             <div style={{fontSize: 56, color: PAL.O}}>=</div>
             <Sprite rows={COUPON} px={10} />
             <div style={{fontSize: 48, color: PAL.O}}>1 CUPOM</div>
           </div>
-          <div style={{fontSize: 26, color: PAL.P, lineHeight: 1.6}}>PARA CONCORRER AOS SORTEIOS!</div>
+          <div style={{fontSize: 24, color: PAL.P, lineHeight: 1.6}}>PARA PARTICIPAR DOS SORTEIOS!</div>
+        </div>
+      ) : null}
+      {f >= T.bonus[0] + 86 && f <= T.bonus[1] ? (
+        <div style={{position: 'absolute', left: 70, width: W - 140, top: 470, ...pixelFrame(), padding: '44px 40px', textAlign: 'center', fontFamily: PIXEL_FONT, color: '#fff'}}>
+          <div style={{fontSize: 30, lineHeight: 1.6}}>TAMBÉM VALE:</div>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 22, margin: '26px 0 10px'}}>
+            <SpinCoinInline />
+            <div style={{fontSize: 60, color: PAL.Y, textShadow: '6px 6px 0 #14101c'}}>1.000</div>
+          </div>
+          <div style={{fontSize: 30, lineHeight: 1.6}}>MOEDAS NAS MISSÕES</div>
+          <div style={{fontSize: 22, color: PAL.P, lineHeight: 1.7, marginTop: 8}}>DO APLICATIVO COMUNIDADE SEMANÁUDIO</div>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 24, marginTop: 26}}>
+            <div style={{fontSize: 56, color: PAL.O}}>=</div>
+            <Sprite rows={COUPON} px={10} />
+            <div style={{fontSize: 48, color: PAL.O}}>1 CUPOM</div>
+          </div>
         </div>
       ) : null}
     </AbsoluteFill>
@@ -424,15 +481,21 @@ const EndCard: React.FC = () => {
               {/* pódio */}
               <div style={{width: 190, height: 40 + i * 40, marginTop: 14, background: '#1b1d2b', boxShadow: `inset 0 ${PX}px 0 ${tier.main}, 0 0 0 5px #14101c`}} />
               <div style={{fontFamily: PIXEL_FONT, fontSize: i === 3 ? 22 : 24, color: tier.text, marginTop: 20, textShadow: '3px 3px 0 #14101c'}}>{tier.name}</div>
+              <div style={{fontFamily: PIXEL_FONT, fontSize: 16, color: '#fff', marginTop: 14, lineHeight: 1.7, textAlign: 'center'}}>
+                {tier.r1}
+                <br />
+                {tier.r2}
+              </div>
             </div>
           );
         })}
       </div>
-      <div style={{position: 'absolute', top: 920, left: 70, right: 70, textAlign: 'center', fontFamily: PIXEL_FONT, opacity: t >= 36 ? 1 : 0}}>
+      <div style={{position: 'absolute', top: 990, left: 70, right: 70, textAlign: 'center', fontFamily: PIXEL_FONT, opacity: t >= 36 ? 1 : 0}}>
         <div style={{fontSize: 30, color: '#fff', lineHeight: 1.6, textShadow: '4px 4px 0 #14101c'}}>
-          QUANTO MAIS VOCÊ COMPRA,
+          FAÇA GRANDES NEGÓCIOS,
           <br />
-          MAIS VOCÊ SE <span style={{color: PAL.O}}>DESTACA!</span>
+          CONQUISTE SEU <span style={{color: PAL.O}}>BROCHE</span>
+          <br />E PARTICIPE DOS SORTEIOS!
         </div>
         <div style={{fontSize: 20, color: PAL.P, lineHeight: 1.7, marginTop: 30}}>
           RETIRE SEU BROCHE NA CENTRAL DE TROCA
@@ -440,7 +503,7 @@ const EndCard: React.FC = () => {
           DE CUPONS · PAVILHÃO SUBWOOFER
         </div>
       </div>
-      <div style={{position: 'absolute', top: 1300, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: t >= 52 ? 1 : 0}}>
+      <div style={{position: 'absolute', top: 1340, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: t >= 52 ? 1 : 0}}>
         <Img src={staticFile('brand/semanaudio-2026-logo.png')} style={{width: 600}} />
         <div style={{fontFamily: PIXEL_FONT, fontSize: 19, color: Math.floor(f / 12) % 2 ? PAL.Y : '#fff', marginTop: 34, textAlign: 'center', lineHeight: 1.7}}>
           AQUI, GRANDES NEGÓCIOS

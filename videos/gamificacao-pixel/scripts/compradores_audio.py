@@ -213,6 +213,11 @@ put(sfx, arp(["C5", "D5", "E5", "G5", "A5", "C6", "D6", "E6", "G6", "C7"], 0.035
 put(sfx, arp(["G5", "G5", "C6"], 0.08, 0.3, 0.3), fr(TL["bonus"][0]))
 for k in range(8):
     put(sfx, coin(), fr(TL["bonus"][0] + 24) + k * 0.18, 0.5)
+put(sfx, blip_up(), fr(TL["bonus"][0] + 86))
+for k in range(4):
+    put(sfx, coin(), fr(TL["bonus"][0] + 92) + k * 0.12, 0.6)
+for c in TL["checks"]:
+    put(sfx, select(), fr(c), 0.8)
 put(sfx, whoosh(0.5), fr(TL["title"]["end"] - 12))
 put(sfx, whoosh(0.5), fr(TL["end"] - 12))
 
